@@ -7,7 +7,7 @@
      sample message file
 
      changelog:
-     v. 2012-05 1.0
+     v. 2013-04 1.0
 
 -->
 
@@ -16,13 +16,14 @@
                        xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailNotifRS.xsd"
                        Version="1.001">
 
-    <Errors>
-        <Error Type="404">
-            Invalid start/end date combination
-        </Error>
-        <Error Type="404">
-            Invalid start/end date combination
-        </Error>
-    </Errors>
+    <Success/>
+    <Warnings>
+        <!-- Note the Type here is from the "Error Warning Type" list -
+             for AlpineBits this is always 11 ("Advisory").
+         -->
+        <Warning Type="11">
+            Warning: last full data set received more than 48 hours ago.
+        </Warning>
+    </Warnings>
 
 </OTA_HotelAvailNotifRS>

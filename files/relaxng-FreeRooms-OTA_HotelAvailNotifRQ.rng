@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 
-
 <!-- 
-     AlpineBits 2012-05
+     AlpineBits 2013-04  
      http://www.alpinebits.org/
 
      Relax NG grammar for OTA_HotelAvailNotifRQ
-     v. 2012-05.1.0
-     v. 2012-05.1.1 - added optional TimeStamp attribute for OTA_HotelAvailNotifRQ to be compatible with AlpineBits 2011-11 documents
-     v. 2012-05.1.2 - changed Thu -> Thur and Wed -> Weds for OTA compatibility
+
+     changelog:
+     v. 2013-04 1.0 - added MessageContentCode for delta messages
+     v. 2012-05 1.2 - changed Thu -> Thur and Wed -> Weds for OTA compatibility
+     v. 2012-05 1.1 - added optional TimeStamp attribute for OTA_HotelAvailNotifRQ to be compatible with AlpineBits 2011-11 documents
+     v. 2012-05 1.0
 
 -->
 
@@ -32,6 +34,11 @@
             <rng:attribute name="Version"/>
             <rng:optional>
                 <rng:attribute name="TimeStamp"/>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="MessageContentCode">
+                    <rng:value type="string">5</rng:value>
+                </rng:attribute>
             </rng:optional>
             <rng:element name="AvailStatusMessages">
                 <rng:oneOrMore>

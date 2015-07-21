@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
 
-
 <!-- 
-     AlpineBits 2012-05
+     AlpineBits 2013-04 
      http://www.alpinebits.org/
 
      Relax NG grammar for OTA_ResRetrieveRS
-     v. 2012-05.1.0
+
+     changelog:
+     v. 2013-04 1.0 - added optional RatePlanCode attribute to RatePlan;
+                      removed restrictions on the form of the ID attribute in UniqueID
+     v. 2012-05 1.0
 
 -->
 
@@ -72,6 +75,11 @@
                         <rng:optional>
                             <rng:element name="RatePlans">
                                 <rng:element name="RatePlan">
+                                    <rng:optional>
+                                        <rng:attribute name="RatePlanCode">
+                                            <rng:ref name="def_nonempty_string"/>
+                                        </rng:attribute>
+                                    </rng:optional>
                                     <rng:ref name="def_mealsincluded"/>
                                 </rng:element>
                             </rng:element>
@@ -175,6 +183,11 @@
                         <rng:ref name="def_roomtypes"/>
                         <rng:element name="RatePlans">
                             <rng:element name="RatePlan">
+                                <rng:optional>
+                                    <rng:attribute name="RatePlanCode">
+                                        <rng:ref name="def_nonempty_string"/>
+                                    </rng:attribute>
+                                </rng:optional>
                                 <rng:ref name="def_mealsincluded"/>
                             </rng:element>
                         </rng:element>
@@ -267,9 +280,7 @@
                 <rng:value type="string">14</rng:value>
             </rng:attribute>
             <rng:attribute name="ID">
-                <rng:data type="string">
-                    <rng:param name="pattern">[0-9a-f]{16}</rng:param>
-                </rng:data>
+                <rng:ref name="def_nonempty_string"/>
             </rng:attribute>
         </rng:element>
     </rng:define>

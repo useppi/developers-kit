@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
-     AlpineBits 2012-05
+     AlpineBits 2013-04 
      http://www.alpinebits.org/
 
      sample message file
-     v. 2012-05.1.0
+
+     changelog:
+     v. 2013-04 1.0 - added RatePlanCode attribute to RatePlan
+     v. 2012-05 1.0
 
 -->
 
@@ -33,7 +36,7 @@
                     </RoomTypes>
 
                     <RatePlans>
-                        <RatePlan>
+                        <RatePlan RatePlanCode="123456-xyz">
                             <!-- Code 1 -> All inclusive -->
                             <MealsIncluded MealPlanCodes="1" Breakfast="true" Lunch="true" Dinner="true"/>
                         </RatePlan>

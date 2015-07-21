@@ -7,7 +7,7 @@
      sample message file
 
      changelog:
-     v. 2012-05 1.0
+     v. 2013-04 1.0
 
 -->
 
@@ -17,5 +17,13 @@
                           Version="3.14">
 
     <Success/>
+    <Warnings>
+        <!-- Note the Type here is from the "Error Warning Type" list -
+             for AlpineBits this is always 11 ("Advisory").
+         -->
+        <Warning Type="11" RecordID="3f6fce1f0da2ef57">
+            Warning: End date is less than 3 days from now.
+        </Warning>
+    </Warnings>
 
 </OTA_HotelRatePlanNotifRS>

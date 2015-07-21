@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 
-
 <!-- 
-     AlpineBits 2012-05
+     AlpineBits 2013-04 
      http://www.alpinebits.org/
 
      Relax NG grammar for OTA_HotelRatePlanNotifRS
-     v. 2012-05.1.0
+
+     changelog:
+     v. 2013-04 1.0 added warnings
+     v. 2012-05 1.0
 
 -->
 
@@ -17,22 +19,45 @@
 
     <rng:include href="relaxng-common.rng"/>
 
-
     <!--
-        The document root is OTA_HotelRatePlanNotifRS, it contains either an empty Success
-        element or Errors with a list of Error elements each having Type attribute.
+      The document root is OTA_HotelRatePlanNotifRS, it contains either an empty Success
+      element (followed by optional Warnings with a list of Warning elements) or Errors
+      with a list of Error elements.
     -->
 
     <rng:start>
         <rng:element name="OTA_HotelRatePlanNotifRS">
-            <rng:attribute name="xsi:schemaLocation"/> 
+            <rng:attribute name="xsi:schemaLocation"/>
             <rng:attribute name="Version"/>
             <rng:choice>
-                <rng:ref name="def_success"/>
+                <rng:ref name="def_success_with_warnings"/>
                 <rng:ref name="def_errors"/>
             </rng:choice>
         </rng:element>
     </rng:start>
+
+    <rng:define name="def_success_with_warnings">
+        <rng:ref name="def_success"/>
+        <rng:optional>
+            <rng:element name="Warnings">
+                <rng:oneOrMore>
+                    <rng:element name="Warning">
+                        <rng:attribute name="Type">
+                            <rng:value type="string">11</rng:value>
+                        </rng:attribute>
+                        <rng:optional>
+                            <rng:attribute name="RecordID">
+                                <rng:data type="string">
+                                    <rng:param name="pattern">[0-9a-f]{16}</rng:param>
+                                </rng:data>
+                            </rng:attribute>
+                        </rng:optional>
+                        <rng:text/>
+                    </rng:element>
+                </rng:oneOrMore>
+            </rng:element>
+        </rng:optional>
+    </rng:define>
 
 </rng:grammar>
 

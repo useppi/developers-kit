@@ -7,14 +7,15 @@
      sample message file
 
      changelog:
-     v. 2012-05 1.0
+     v. 2013-04 1.0
 
 -->
 
 <OTA_HotelAvailNotifRQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                        xmlns="http://www.opentravel.org/OTA/2003/05"
                        xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailNotifRQ.xsd"
-                       Version="1.002">
+                       Version="1.002"
+                       MessageContentCode="5">
 
     <AvailStatusMessages HotelCode="123" HotelName="Frangart Inn" >
 

@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 
-
 <!-- 
-     AlpineBits 2012-05
+     AlpineBits 2013-04 
      http://www.alpinebits.org/
 
      common patterns for the Relax NG grammars
-     v. 2012-05.1.0
+
+     changelog:
+     v. 2012-05 1.0
 
 -->
 
