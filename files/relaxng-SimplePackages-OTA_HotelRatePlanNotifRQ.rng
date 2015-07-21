@@ -7,6 +7,8 @@
 
      Relax NG grammar for OTA_HotelRatePlanNotifRQ
      v. 2012-05.1.0
+     v. 2012-05.1.2 - changed Thu -> Thur and Wed -> Weds for OTA compatibility
+
 
 -->
 
@@ -126,7 +128,7 @@
     </rng:define>
 
 
-    <!-- A Rate element has attributes MinGuestApplicable, Start, End, Mon, Tue, Wed, Thu,
+    <!-- A Rate element has attributes MinGuestApplicable, Start, End, Mon, Tue, Weds, Thur,
          Fri, Sat, Sun and Duration and its children are:
             - BaseByGuestAmts with one BaseByGuestAmt element
             - RateDescription
@@ -156,12 +158,12 @@
                 </rng:attribute>
             </rng:optional>
             <rng:optional>
-                <rng:attribute name="Wed">
+                <rng:attribute name="Weds">
                     <rng:ref name="def_bool"/>
                 </rng:attribute>
             </rng:optional>
             <rng:optional>
-                <rng:attribute name="Thu">
+                <rng:attribute name="Thur">
                     <rng:ref name="def_bool"/>
                 </rng:attribute>
             </rng:optional>

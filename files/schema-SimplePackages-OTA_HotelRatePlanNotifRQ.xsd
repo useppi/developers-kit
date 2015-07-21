@@ -7,6 +7,7 @@
   
   W3C XML Schema for OTA_HotelRatePlanNotifRQ
   v. 2012-05.1.0
+  v. 2012-05.1.2 - changed Thu -> Thur and Wed -> Weds for OTA compatibility
   
 -->
 
@@ -107,7 +108,7 @@
 
 
   <!--
-    A Rate element has attributes MinGuestApplicable, Start, End, Mon, Tue, Wed, Thu,
+    A Rate element has attributes MinGuestApplicable, Start, End, Mon, Tue, Weds, Thur,
     Fri, Sat, Sun and Duration and its children are:
        - BaseByGuestAmts with one BaseByGuestAmt element
        - RateDescription
@@ -123,14 +124,14 @@
       </xs:sequence>
       <xs:attribute name="MinGuestApplicable" use="required" type="def_int_gt0"/>
       <xs:attribute name="Start" use="required" type="def_date"/>
-      <xs:attribute name="End" use="required" type="def_date"/>
-      <xs:attribute name="Mon" type="def_bool"/>
-      <xs:attribute name="Tue" type="def_bool"/>
-      <xs:attribute name="Wed" type="def_bool"/>
-      <xs:attribute name="Thu" type="def_bool"/>
-      <xs:attribute name="Fri" type="def_bool"/>
-      <xs:attribute name="Sat" type="def_bool"/>
-      <xs:attribute name="Sun" type="def_bool"/>
+      <xs:attribute name="End"  use="required" type="def_date"/>
+      <xs:attribute name="Mon"  type="def_bool"/>
+      <xs:attribute name="Tue"  type="def_bool"/>
+      <xs:attribute name="Weds" type="def_bool"/>
+      <xs:attribute name="Thur" type="def_bool"/>
+      <xs:attribute name="Fri"  type="def_bool"/>
+      <xs:attribute name="Sat"  type="def_bool"/>
+      <xs:attribute name="Sun"  type="def_bool"/>
       <xs:attributeGroup ref="def_duration_attribute"/>
     </xs:complexType>
   </xs:element>
