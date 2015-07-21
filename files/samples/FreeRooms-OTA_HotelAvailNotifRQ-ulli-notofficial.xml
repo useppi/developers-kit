@@ -1,0 +1,6 @@
+<OTA_HotelAvailNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="3.000" TimeStamp="2014-10-23T09:46:12" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailNotifRQ.xsd">
+  <UniqueID Type="16" ID="1" Instance="CompleteSet"/>
+  <AvailStatusMessages HotelCode="...">
+    <AvailStatusMessage/>
+  </AvailStatusMessages>
+</OTA_HotelAvailNotifRQ>

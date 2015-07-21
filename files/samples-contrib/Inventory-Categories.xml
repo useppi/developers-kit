@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelInvNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="5.000" TimeStamp="2014-08-04T10:15:05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelInvNotifRQ.xsd">
+  <SellableProducts HotelCode="2588">
+    <SellableProduct InvTypeCode="EZ">
+      <GuestRoom>
+        <Quantities MaximumAdditionalGuests="0"/>
+        <Occupancy MinOccupancy="1" MaxOccupancy="1"/>
+        <Room RoomClassificationCode="42"/>
+        <Description>
+          <Text TextFormat="PlainText" Language="de">Einzelzimmer</Text>
+          <Text TextFormat="PlainText" Language="en">Single Room</Text>
+          <Text TextFormat="PlainText" Language="fr">Chambre individuelle</Text>
+          <Text TextFormat="PlainText" Language="it">Camera singola</Text>
+        </Description>
+      </GuestRoom>
+    </SellableProduct>
+    <SellableProduct InvTypeCode="DZ">
+      <GuestRoom>
+        <Quantities MaximumAdditionalGuests="1"/>
+        <Occupancy MinOccupancy="1" MaxOccupancy="3"/>
+        <Occupancy AgeQualifyingCode="8" MaxOccupancy="3"/>
+        <Room RoomClassificationCode="42"/>
+        <Description>
+          <Text TextFormat="PlainText" Language="de">Doppelzimmer Luxus</Text>
+          <Text TextFormat="PlainText" Language="en">Double Room</Text>
+          <Text TextFormat="PlainText" Language="fr">Chambre double</Text>
+          <Text TextFormat="PlainText" Language="it">Camera doppia lusso</Text>
+        </Description>
+      </GuestRoom>
+    </SellableProduct>
+    <SellableProduct InvTypeCode="FW">
+      <GuestRoom>
+        <Quantities MaximumAdditionalGuests="2"/>
+        <Occupancy MinOccupancy="2" MaxOccupancy="6"/>
+        <Room RoomClassificationCode="13"/>
+        <Description>
+          <Text TextFormat="PlainText" Language="de">Ferienwohnung</Text>
+          <Text TextFormat="PlainText" Language="en">Holiday Flat</Text>
+          <Text TextFormat="PlainText" Language="fr">Appartement en location</Text>
+          <Text TextFormat="PlainText" Language="it">Appartamento</Text>
+        </Description>
+      </GuestRoom>
+    </SellableProduct>
+  </SellableProducts>
+</OTA_HotelInvNotifRQ>
