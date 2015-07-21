@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--
+  AlpineBits 2012-05
+  http://www.alpinebits.org/
+  
+  W3C XML Schema for OTA_ReadRQ
+  v. 2012-05.1.0
+  
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.opentravel.org/OTA/2003/05"
+           xmlns="http://www.opentravel.org/OTA/2003/05">
+
+  <xs:include schemaLocation="schema-common.xsd"/>
+
+
+  <!--
+    The document root is OTA_ReadRQ, it contains a ReadRequests elements with a 
+    HotelReadRequest and an optional SelectionCriteria.
+  -->
+
+  <xs:element name="OTA_ReadRQ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ReadRequests"/>
+      </xs:sequence>
+      <xs:attribute name="Version" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ReadRequests">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="HotelReadRequest"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="HotelReadRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="SelectionCriteria"/>
+      </xs:sequence>
+      <xs:attribute name="HotelCode" type="def_nonempty_string"/>
+      <xs:attribute name="HotelName" type="def_nonempty_string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SelectionCriteria">
+    <xs:complexType>
+      <xs:attribute name="Start" use="required" type="def_datetime"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

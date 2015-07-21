@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- 
+     AlpineBits 2012-05
+     http://www.alpinebits.org/
+
+     sample message file
+     v. 2012-05.1.0
+
+-->
+
 <OTA_HotelAvailNotifRQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                        xmlns="http://www.opentravel.org/OTA/2003/05"
                        xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailNotifRQ.xsd"
-                       TimeStamp="2004-05-01T06:39:09" Target="Production" Version="1.002">
+                       Version="1.002">
 
-    <AvailStatusMessages>
+    <AvailStatusMessages HotelCode="123" HotelName="Frangart Inn" >
 
         <AvailStatusMessage BookingLimit="1" BookingLimitMessageType="SetLimit">
             <StatusApplicationControl Start="2010-08-01" End="2010-08-10" InvCode="101S" IsRoom="true"/>
@@ -27,6 +36,6 @@
             <StatusApplicationControl Start="2010-08-01" End="2010-08-31" InvCode="103" IsRoom="true"/>
         </AvailStatusMessage>
 
-    </AvailStatusMessages>
+  </AvailStatusMessages>
 
 </OTA_HotelAvailNotifRQ>

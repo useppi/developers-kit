@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+
+<!-- 
+     AlpineBits 2012-05
+     http://www.alpinebits.org/
+
+     Relax NG grammar for OTA_HotelRatePlanNotifRS
+     v. 2012-05.1.0
+
+-->
+
+<rng:grammar     xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        ns="http://www.opentravel.org/OTA/2003/05"
+           datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <rng:include href="relaxng-common.rng"/>
+
+
+    <!--
+        The document root is OTA_HotelRatePlanNotifRS, it contains either an empty Success
+        element or Errors with a list of Error elements each having Type attribute.
+    -->
+
+    <rng:start>
+        <rng:element name="OTA_HotelRatePlanNotifRS">
+            <rng:attribute name="xsi:schemaLocation"/> 
+            <rng:attribute name="Version"/>
+            <rng:choice>
+                <rng:ref name="def_success"/>
+                <rng:ref name="def_errors"/>
+            </rng:choice>
+        </rng:element>
+    </rng:start>
+
+</rng:grammar>
+

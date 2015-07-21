@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+
+
+<!-- 
+     AlpineBits 2012-05
+     http://www.alpinebits.org/
+
+     Relax NG grammar for OTA_HotelRatePlanNotifRQ
+     v. 2012-05.1.0
+
+-->
+
+<rng:grammar     xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        ns="http://www.opentravel.org/OTA/2003/05"
+           datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <rng:include href="relaxng-common.rng"/>
+
+
+    <!--
+        The document root is OTA_HotelRatePlanNotifRQ, it contains a RatePlans element with
+        either one or more RatePlan elements that describe a simple package to insert or update 
+        (def_insert_rate_plan) or identify a simple package to remove (def_remove_rate_plan).
+    -->
+
+    <rng:start>
+        <rng:element name="OTA_HotelRatePlanNotifRQ">
+            <rng:attribute name="xsi:schemaLocation"/> 
+            <rng:attribute name="Version"/>
+            <rng:element name="RatePlans">
+                <rng:choice>
+                    <rng:oneOrMore>
+                        <rng:ref name="def_insert_rate_plan"/>
+                    </rng:oneOrMore>
+                    <rng:oneOrMore>
+                        <rng:ref name="def_remove_rate_plan"/>
+                    </rng:oneOrMore>
+                </rng:choice>
+            </rng:element>
+        </rng:element>
+    </rng:start>
+
+
+    <!-- 
+        A RatePlan element in the def_insert_rate_plan definition describes a simple package
+        to insert or update. It has attributes Start and End and its children are:
+            - Rates with one or more Rate elements (def_rate)
+            - four Description elements with name = title, intro, gallery and details
+            - UniqueID
+            - HotelRef
+    -->
+
+    <rng:define name="def_insert_rate_plan">
+        <rng:element name="RatePlan">
+            <rng:attribute name="Start">
+                <rng:ref name="def_date"/>
+            </rng:attribute>
+            <rng:attribute name="End">
+                <rng:ref name="def_date"/>
+            </rng:attribute>
+            <rng:element name="Rates">
+                <rng:oneOrMore>
+                    <rng:ref name="def_rate"/>
+                </rng:oneOrMore>
+            </rng:element>
+            <rng:element name="Description">
+                <rng:attribute name="Name">
+                    <rng:value type="string">title</rng:value>
+                </rng:attribute>
+                <rng:oneOrMore>
+                    <rng:ref name="def_plaintext"/>
+                </rng:oneOrMore>
+            </rng:element>
+            <rng:element name="Description">
+                <rng:attribute name="Name">
+                    <rng:value type="string">intro</rng:value>
+                </rng:attribute>
+                <rng:oneOrMore>
+                    <rng:ref name="def_plaintext"/>
+                    <rng:ref name="def_optional_urls"/>
+                </rng:oneOrMore>
+            </rng:element>
+            <rng:optional>
+                <rng:element name="Description">
+                    <rng:attribute name="Name">
+                        <rng:value type="string">gallery</rng:value>
+                    </rng:attribute>
+                    <rng:oneOrMore>
+                        <rng:ref name="def_plaintext"/>
+                        <rng:ref name="def_images"/>
+                        <rng:ref name="def_optional_urls"/>
+                    </rng:oneOrMore>
+                </rng:element>
+            </rng:optional>
+            <rng:optional>
+                <rng:element name="Description">
+                    <rng:attribute name="Name">
+                        <rng:value type="string">details</rng:value>
+                    </rng:attribute>
+                    <rng:oneOrMore>
+                        <rng:choice>
+                            <rng:ref name="def_plaintext_or_html"/>
+                            <rng:ref name="def_listitem"/>
+                        </rng:choice>
+                    </rng:oneOrMore>
+                </rng:element>
+            </rng:optional>
+            <rng:ref name="def_uniqueid"/>
+            <rng:ref name="def_hotelref"/>
+        </rng:element>
+    </rng:define>
+
+
+    <!-- 
+        A RatePlan element in the def_remove_rate_plan definition identifies a simple package
+        to remove. Its only child is:
+            - UniqueID
+    -->
+
+
+    <rng:define name="def_remove_rate_plan">
+        <rng:element name="RatePlan">
+            <rng:ref name="def_uniqueid"/>
+        </rng:element>
+    </rng:define>
+
+
+    <!-- A Rate element has attributes MinGuestApplicable, Start, End, Mon, Tue, Wed, Thu,
+         Fri, Sat, Sun and Duration and its children are:
+            - BaseByGuestAmts with one BaseByGuestAmt element
+            - RateDescription
+            - MealsIncluded
+    -->
+
+    <rng:define name="def_rate">
+
+        <rng:element name="Rate">
+            <rng:attribute name="MinGuestApplicable">
+                <rng:ref name="def_int_gt0"/>
+            </rng:attribute>
+            <rng:attribute name="Start">
+                <rng:ref name="def_date"/>
+            </rng:attribute>
+            <rng:attribute name="End">
+                <rng:ref name="def_date"/>
+            </rng:attribute>
+            <rng:optional>
+                <rng:attribute name="Mon">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="Tue">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="Wed">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="Thu">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="Fri">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="Sat">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="Sun">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+            </rng:optional>
+            <rng:ref name="def_duration_attribute"/>
+            <rng:element name="BaseByGuestAmts">
+                <rng:element name="BaseByGuestAmt">
+                    <rng:attribute name="NumberOfGuests">
+                        <rng:value type="string">1</rng:value>
+                    </rng:attribute>
+                    <rng:attribute name="AmountAfterTax">
+                        <rng:ref name="def_decimal_ge0"/>
+                    </rng:attribute>
+                    <rng:attribute name="CurrencyCode">
+                        <rng:ref name="def_nonempty_string"/>
+                    </rng:attribute>
+                </rng:element>
+            </rng:element>
+            <rng:optional>
+                <rng:element name="RateDescription">
+                    <rng:attribute name="Name">
+                        <rng:value type="string">included services</rng:value>
+                    </rng:attribute>
+                    <rng:oneOrMore>
+                        <rng:ref name="def_listitem"/>
+                    </rng:oneOrMore>
+                </rng:element>
+            </rng:optional>
+            <rng:ref name="def_mealsincluded"/>
+        </rng:element>
+    </rng:define>
+
+
+    <!-- 
+        The element UniqueID must have attributes Type="18" and ID
+    -->
+
+    <rng:define name="def_uniqueid">
+        <rng:element name="UniqueID">
+            <rng:attribute name="Type">
+                <rng:value type="string">18</rng:value>
+            </rng:attribute>
+            <rng:attribute name="ID">
+                <rng:data type="string">
+                    <rng:param name="pattern">[0-9a-f]{16}</rng:param>
+                </rng:data>
+            </rng:attribute>
+        </rng:element>
+    </rng:define>
+
+
+    <!-- 
+        The element HotelRef must have at least one of the two attributes HotelCode, HotelName.
+    -->
+
+    <rng:define name="def_hotelref">
+        <rng:element name="HotelRef">
+            <rng:oneOrMore>
+                <rng:choice>
+                    <rng:attribute name="HotelCode">
+                        <rng:ref name="def_nonempty_string"/>
+                    </rng:attribute>
+                    <rng:attribute name="HotelName">
+                        <rng:ref name="def_nonempty_string"/>
+                    </rng:attribute>
+                </rng:choice>
+            </rng:oneOrMore>
+        </rng:element>
+    </rng:define>
+
+
+    <!--
+        The following are some simple building blocks.
+    -->
+
+    <rng:define name="def_plaintext">
+        <rng:element name="Text">
+            <rng:attribute name="TextFormat">
+                <rng:value type="string">PlainText</rng:value>
+            </rng:attribute>
+            <rng:ref name="def_language_attribute"/>
+            <rng:ref name="def_nonempty_string"/>
+        </rng:element>
+    </rng:define>
+
+    <rng:define name="def_plaintext_or_html">
+        <rng:element name="Text">
+            <rng:attribute name="TextFormat">
+                <rng:choice>
+                    <rng:value type="string">PlainText</rng:value>
+                    <rng:value type="string">HTML</rng:value>
+                </rng:choice>
+            </rng:attribute>
+            <rng:ref name="def_language_attribute"/>
+            <rng:ref name="def_nonempty_string"/>
+        </rng:element>
+    </rng:define>
+
+    <rng:define name="def_optional_urls">
+        <rng:zeroOrMore>
+            <rng:element name="URL">
+                <rng:data type="anyURI">
+                    <rng:param name="pattern">https?://.+</rng:param>
+                </rng:data>
+            </rng:element>
+        </rng:zeroOrMore>
+    </rng:define>
+
+    <rng:define name="def_images">
+        <rng:oneOrMore>
+            <rng:element name="Image">
+                <rng:data type="anyURI">
+                    <rng:param name="pattern">https?://.+</rng:param>
+                </rng:data>
+            </rng:element>
+        </rng:oneOrMore>
+    </rng:define>
+
+</rng:grammar>
+

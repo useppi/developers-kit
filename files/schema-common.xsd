@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--
+  AlpineBits 2012-05
+  http://www.alpinebits.org/
+  
+  common patterns for the W3C XML Schema
+  v. 2012-05.1.0
+  
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.opentravel.org/OTA/2003/05"
+           xmlns="http://www.opentravel.org/OTA/2003/05">
+
+
+  <!-- The Success element. -->
+
+  <xs:element name="Success">
+    <xs:complexType/>
+  </xs:element>
+
+
+  <!-- The Error element. -->
+
+  <xs:element name="Errors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Error"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Error">
+    <xs:complexType mixed="true">
+      <xs:attribute name="Type" use="required" type="def_int_ge0"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- The MealsIncluded element. -->
+
+  <xs:element name="MealsIncluded">
+    <xs:complexType>
+      <xs:attribute name="MealPlanCodes">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Breakfast" use="required" type="def_bool"/>
+      <xs:attribute name="Lunch" use="required" type="def_bool"/>
+      <xs:attribute name="Dinner" use="required" type="def_bool"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- The ListItem element. -->
+
+  <xs:element name="ListItem">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="def_nonempty_string">
+          <xs:attribute name="ListItem" use="required" type="def_int_ge0"/>
+          <xs:attributeGroup ref="def_language_attribute"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- The Language attribute. -->
+
+  <xs:attributeGroup name="def_language_attribute">
+    <xs:attribute name="Language" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:language">
+          <xs:pattern value="[a-z][a-z]"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+
+  <!-- The Duration attribute. -->
+
+  <xs:attributeGroup name="def_duration_attribute">
+    <xs:attribute name="Duration" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="P[0-9]+N"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+
+  <!-- A generic non-empty string type. -->
+
+  <xs:simpleType name="def_nonempty_string">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- A generic integer > 0 type. -->
+
+  <xs:simpleType name="def_int_gt0">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- A generic integer >= 0 type. -->
+
+  <xs:simpleType name="def_int_ge0">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:pattern value="[0-9]+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- A generic decimal >= 0 type. -->
+
+  <xs:simpleType name="def_decimal_ge0">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.0"/>
+      <xs:pattern value="[0-9]*\.?[0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- A generic date type. -->
+
+  <xs:simpleType name="def_date">
+    <xs:restriction base="xs:date">
+      <xs:pattern value="\S+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- A generic datetime type. -->
+
+  <xs:simpleType name="def_datetime">
+    <xs:restriction base="xs:dateTime">
+      <xs:pattern value="\S+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- A generic boolean type. -->
+
+  <xs:simpleType name="def_bool">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(true|false)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

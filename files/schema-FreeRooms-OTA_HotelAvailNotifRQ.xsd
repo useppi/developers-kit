@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--
+  AlpineBits 2012-05
+  http://www.alpinebits.org/
+  
+  W3C XML Schema for OTA_HotelAvailNotifRQ
+  v. 2012-05.1.0
+  v. 2012-05.1.1 - added optional TimeStamp attribute for OTA_HotelAvailNotifRQ to be compatible with AlpineBits 2011-11 documents
+  
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.opentravel.org/OTA/2003/05"
+           xmlns="http://www.opentravel.org/OTA/2003/05">
+
+  <xs:include schemaLocation="schema-common.xsd"/>
+
+
+  <!--
+    The document root is OTA_HotelAvailNotifRQ, it contains one AvailStatusMessages
+    element with attributes HotelCode or HotelName or both. Its children are one or
+    more AvailStatusMessage elements.
+  -->
+
+  <xs:element name="OTA_HotelAvailNotifRQ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="AvailStatusMessages"/>
+      </xs:sequence>
+      <xs:attribute name="Version" use="required"/>
+      <xs:attribute name="TimeStamp"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AvailStatusMessages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="AvailStatusMessage"/>
+      </xs:sequence>
+      <xs:attribute name="HotelCode" type="def_nonempty_string"/>
+      <xs:attribute name="HotelName" type="def_nonempty_string"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!--
+    The AvailStatusMessage element with its children:
+    StatusApplicationControl and LengthsOfStay/LengthOfStay.
+  -->
+
+  <xs:element name="AvailStatusMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="StatusApplicationControl"/>
+        <xs:element minOccurs="0" ref="LengthsOfStay"/>
+      </xs:sequence>
+      <xs:attribute name="BookingLimit" use="required" type="def_int_ge0"/>
+      <xs:attribute name="BookingLimitMessageType" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="SetLimit"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="StatusApplicationControl">
+    <xs:complexType>
+      <xs:attribute name="Start" use="required" type="def_date"/>
+      <xs:attribute name="End" use="required" type="def_date"/>
+      <xs:attribute name="InvCode" use="required" type="def_nonempty_string"/>
+      <xs:attribute name="IsRoom" use="required" type="def_bool"/>
+      <xs:attribute name="Mon" type="def_bool"/>
+      <xs:attribute name="Tue" type="def_bool"/>
+      <xs:attribute name="Wed" type="def_bool"/>
+      <xs:attribute name="Thu" type="def_bool"/>
+      <xs:attribute name="Fri" type="def_bool"/>
+      <xs:attribute name="Sat" type="def_bool"/>
+      <xs:attribute name="Sun" type="def_bool"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="LengthsOfStay">
+    <xs:complexType>
+        <xs:sequence>
+          <xs:group minOccurs="1" maxOccurs="2" ref="def_los"/>
+        </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- The LengthOfStay elements with SetMinLOS or SetMaxLOS. -->
+
+  <xs:group name="def_los">
+    <xs:sequence>
+      <xs:element name="LengthOfStay">
+        <xs:complexType>
+          <xs:attribute name="MinMaxMessageType" use="required">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="SetMinLOS"/>
+                <xs:enumeration value="SetMaxLOS"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="Time" use="required" type="def_int_gt0"/>
+          <xs:attribute name="TimeUnit" use="required">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="Day"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+</xs:schema>

@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+
+<!-- 
+     AlpineBits 2012-05
+     http://www.alpinebits.org/
+
+     Relax NG grammar for OTA_HotelAvailNotifRQ
+     v. 2012-05.1.0
+     v. 2012-05.1.1 - added optional TimeStamp attribute for OTA_HotelAvailNotifRQ to be compatible with AlpineBits 2011-11 documents
+
+-->
+
+<rng:grammar     xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        ns="http://www.opentravel.org/OTA/2003/05"
+           datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <rng:include href="relaxng-common.rng"/>
+
+
+    <!--
+        The document root is OTA_HotelAvailNotifRQ, it contains one AvailStatusMessages
+        element with attributes HotelCode or HotelName or both. Its children are one or
+        more AvailStatusMessage elements.
+    -->
+
+    <rng:start>
+        <rng:element name="OTA_HotelAvailNotifRQ">
+            <rng:attribute name="xsi:schemaLocation"/> 
+            <rng:attribute name="Version"/>
+            <rng:optional>
+                <rng:attribute name="TimeStamp"/>
+            </rng:optional>
+            <rng:element name="AvailStatusMessages">
+                <rng:oneOrMore>
+                    <rng:choice>
+                        <rng:attribute name="HotelCode">
+                            <rng:ref name="def_nonempty_string"/>
+                        </rng:attribute>
+                        <rng:attribute name="HotelName">
+                            <rng:ref name="def_nonempty_string"/>
+                        </rng:attribute>
+                    </rng:choice>
+                </rng:oneOrMore>
+                <rng:oneOrMore>
+                    <rng:ref name="def_availstatus"/>
+                </rng:oneOrMore>
+            </rng:element>
+        </rng:element>
+    </rng:start>
+
+
+    <!-- 
+        The AvailStatusMessage element with its children:
+        StatusApplicationControl and LengthsOfStay/LengthOfStay.
+    -->
+
+    <rng:define name="def_availstatus">
+        <rng:element name="AvailStatusMessage">
+            <rng:attribute name="BookingLimit">
+                <rng:ref name="def_int_ge0"/>
+            </rng:attribute>
+            <rng:attribute name="BookingLimitMessageType">
+                <rng:value type="string">SetLimit</rng:value>
+            </rng:attribute>
+            <rng:element name="StatusApplicationControl">
+                <rng:attribute name="Start">
+                    <rng:ref name="def_date"/>
+                </rng:attribute>
+                <rng:attribute name="End">
+                    <rng:ref name="def_date"/>
+                </rng:attribute>
+                <rng:attribute name="InvCode">
+                    <rng:ref name="def_nonempty_string"/>
+                </rng:attribute>
+                <rng:attribute name="IsRoom">
+                    <rng:ref name="def_bool"/>
+                </rng:attribute>
+                <rng:optional>
+                    <rng:attribute name="Mon">
+                        <rng:ref name="def_bool"/>
+                    </rng:attribute>
+                </rng:optional>
+                <rng:optional>
+                    <rng:attribute name="Tue">
+                        <rng:ref name="def_bool"/>
+                    </rng:attribute>
+                </rng:optional>
+                <rng:optional>
+                    <rng:attribute name="Wed">
+                        <rng:ref name="def_bool"/>
+                    </rng:attribute>
+                </rng:optional>
+                <rng:optional>
+                    <rng:attribute name="Thu">
+                        <rng:ref name="def_bool"/>
+                    </rng:attribute>
+                </rng:optional>
+                <rng:optional>
+                    <rng:attribute name="Fri">
+                        <rng:ref name="def_bool"/>
+                    </rng:attribute>
+                </rng:optional>
+                <rng:optional>
+                    <rng:attribute name="Sat">
+                        <rng:ref name="def_bool"/>
+                    </rng:attribute>
+                </rng:optional>
+                <rng:optional>
+                    <rng:attribute name="Sun">
+                        <rng:ref name="def_bool"/>
+                    </rng:attribute>
+                </rng:optional>
+            </rng:element>
+            <rng:optional>
+                <rng:element name="LengthsOfStay">
+                    <!-- either minlos or maxlos or minlos + maxlos -->
+                    <rng:choice>
+                        <rng:ref name="def_minlos"/>
+                        <rng:ref name="def_maxlos"/>
+                        <rng:group>
+                            <rng:ref name="def_minlos"/>
+                            <rng:ref name="def_maxlos"/>
+                        </rng:group>
+                    </rng:choice>    
+                </rng:element>
+            </rng:optional>
+        </rng:element>
+    </rng:define>
+
+
+    <!--
+        The LengthOfStay elements with SetMinLOS and SetMaxLOS.
+    -->
+
+    <rng:define name="def_minlos">
+        <rng:element name="LengthOfStay">
+            <rng:attribute name="MinMaxMessageType">
+                <rng:value type="string">SetMinLOS</rng:value>
+            </rng:attribute>
+            <rng:attribute name="Time">
+                <rng:ref name="def_int_gt0"/>
+            </rng:attribute>
+            <rng:attribute name="TimeUnit">
+                <rng:value type="string">Day</rng:value>
+            </rng:attribute>
+        </rng:element>
+    </rng:define>
+
+
+    <rng:define name="def_maxlos">
+        <rng:element name="LengthOfStay">
+            <rng:attribute name="MinMaxMessageType">
+                <rng:value type="string">SetMaxLOS</rng:value>
+            </rng:attribute>
+            <rng:attribute name="Time">
+                <rng:ref name="def_int_gt0"/>
+            </rng:attribute>
+            <rng:attribute name="TimeUnit">
+                <rng:value type="string">Day</rng:value>
+            </rng:attribute>
+        </rng:element>
+    </rng:define>
+
+
+</rng:grammar>
+

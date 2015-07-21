@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+     AlpineBits 2012-05
+     http://www.alpinebits.org/
+
+     sample message file
+     v. 2012-05.1.0
+
+-->
+
+<OTA_ResRetrieveRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                   xmlns="http://www.opentravel.org/OTA/2003/05" 
+                   xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_ResRetrieveRS.xsd" 
+                   Version="2.000">
+
+    <Success/>
+
+    <ReservationsList>
+
+        <HotelReservation CreateDateTime="2012-03-21T15:00:00+01:00"
+                          ResStatus="Quote">
+
+            <!-- Type 14 -> Reservation -->
+            <UniqueID Type="14" ID="6b34fe24ac2ff811"/>
+
+            <RoomStays>
+
+                <RoomStay>
+
+                    <!-- 2 adults -->
+                    <GuestCounts>
+                        <GuestCount Count="2"/>
+                    </GuestCounts>
+
+                    <TimeSpan Duration="P7N">
+                        <StartDateWindow EarliestDate="2012-08-13" LatestDate="2012-08-13"/>
+                    </TimeSpan>
+
+                </RoomStay>
+
+                <!-- For ResStatus="Quote", a series of RoomStay elements can be followed by zero or one
+                     RoomStay element that has only a TimeSpan child. In that case, the client ought to
+                     interpret that last RoomStay as indicating an alternative period with regard to the
+                     preceding RoomStay element(s).
+                -->
+
+                <RoomStay>
+
+                    <TimeSpan Duration="P7N">
+                        <StartDateWindow EarliestDate="2012-08-20" LatestDate="2012-08-20"/>
+                    </TimeSpan>
+
+                </RoomStay>
+
+            </RoomStays>
+
+            <ResGuests>
+                <ResGuest>
+                    <Profiles>
+                        <ProfileInfo>
+                            <Profile>
+                                <Customer Gender="Unknown" Language="it">
+
+                                    <PersonName>
+                                        <GivenName>Mario</GivenName>
+                                        <Surname>Rossi</Surname>
+                                    </PersonName>
+
+                                    <!-- Code 5 -> Mobile -->
+                                    <Telephone PhoneTechType="5" PhoneNumber="+3934567893"/>
+
+                                    <Email Remark="newsletter:no">mario.rossi@example.com</Email>
+
+                                    <Address Remark="catalog:no">
+                                        <AddressLine>Via Pippo 1</AddressLine>
+                                        <CityName>Paperopoli</CityName>
+                                        <PostalCode>4321</PostalCode>
+                                        <CountryName Code="IT"/>
+                                    </Address>
+
+                                </Customer>
+                            </Profile>
+                        </ProfileInfo>
+                    </Profiles>
+                </ResGuest>
+            </ResGuests>
+
+           
+                <!-- For ResStatus="Quote", ResGlobalInfo could be empty, since all children elements are
+                     optional. Nevertheless the element ResGlobalInfo must be given, even if it's empty. -->
+
+            <ResGlobalInfo>
+
+                <Comments>
+
+                    <Comment Name="customer comment">
+                        <Text >
+                            Posso portare un gatto?
+
+                            Distinti saluti, 
+                            Mario Rossi
+                        </Text>
+                    </Comment>
+
+                </Comments>
+
+            </ResGlobalInfo>
+
+        </HotelReservation>
+
+    </ReservationsList>
+
+</OTA_ResRetrieveRS>

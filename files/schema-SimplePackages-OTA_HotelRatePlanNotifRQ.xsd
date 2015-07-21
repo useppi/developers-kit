@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--
+  AlpineBits 2012-05
+  http://www.alpinebits.org/
+  
+  W3C XML Schema for OTA_HotelRatePlanNotifRQ
+  v. 2012-05.1.0
+  
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.opentravel.org/OTA/2003/05"
+           xmlns="http://www.opentravel.org/OTA/2003/05">
+
+  <xs:include schemaLocation="schema-common.xsd"/>
+
+  <!--
+    The document root is OTA_HotelRatePlanNotifRQ, it contains a RatePlans element with
+    either one or more RatePlan elements that describe a simple package.
+  -->
+
+  <xs:element name="OTA_HotelRatePlanNotifRQ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="RatePlans"/>
+      </xs:sequence>
+      <xs:attribute name="Version" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RatePlans">
+    <xs:complexType>
+        <xs:group maxOccurs="unbounded" ref="def_rate_plan"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!--
+    A RatePlan element describes a simple package. It has attributes Start
+    and End and its children are:
+        - Rates with one or more Rate elements (def_rate)
+        - four Description elements with name = title, intro, gallery and details
+        - UniqueID
+        - HotelRef
+  -->
+
+  <xs:group name="def_rate_plan">
+    <xs:sequence>
+      <xs:element name="RatePlan">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" ref="Rates"/>
+            <xs:element minOccurs="0" name="Description">
+              <xs:complexType>
+                <xs:group maxOccurs="unbounded" ref="def_plaintext"/>
+                <xs:attribute name="Name" use="required">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="title"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="4" name="Description">
+              <xs:complexType>
+                <xs:sequence maxOccurs="unbounded">
+                    <xs:choice>
+                      <xs:group ref="def_plaintext"/>
+                      <xs:group ref="def_images"/>
+                      <xs:group ref="def_optional_urls"/>
+                      <xs:group ref="def_plaintext_or_html"/>
+                      <xs:element ref="ListItem"/>
+                    </xs:choice>
+                </xs:sequence>
+                <xs:attribute name="Name" use="required">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="title"/>
+                      <xs:enumeration value="intro"/>
+                      <xs:enumeration value="gallery"/>
+                      <xs:enumeration value="details"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:element ref="UniqueID"/>
+            <xs:element minOccurs="0" ref="HotelRef"/>
+          </xs:sequence>
+          <xs:attribute name="Start" type="def_date"/>
+          <xs:attribute name="End" type="def_date"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:element name="Rates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Rate"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!--
+    A Rate element has attributes MinGuestApplicable, Start, End, Mon, Tue, Wed, Thu,
+    Fri, Sat, Sun and Duration and its children are:
+       - BaseByGuestAmts with one BaseByGuestAmt element
+       - RateDescription
+       - MealsIncluded
+  -->
+
+  <xs:element name="Rate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="BaseByGuestAmts"/>
+        <xs:element minOccurs="0" ref="RateDescription"/>
+        <xs:element ref="MealsIncluded"/>
+      </xs:sequence>
+      <xs:attribute name="MinGuestApplicable" use="required" type="def_int_gt0"/>
+      <xs:attribute name="Start" use="required" type="def_date"/>
+      <xs:attribute name="End" use="required" type="def_date"/>
+      <xs:attribute name="Mon" type="def_bool"/>
+      <xs:attribute name="Tue" type="def_bool"/>
+      <xs:attribute name="Wed" type="def_bool"/>
+      <xs:attribute name="Thu" type="def_bool"/>
+      <xs:attribute name="Fri" type="def_bool"/>
+      <xs:attribute name="Sat" type="def_bool"/>
+      <xs:attribute name="Sun" type="def_bool"/>
+      <xs:attributeGroup ref="def_duration_attribute"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="BaseByGuestAmts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="BaseByGuestAmt"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="BaseByGuestAmt">
+    <xs:complexType>
+      <xs:attribute name="NumberOfGuests" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="AmountAfterTax" use="required" type="def_decimal_ge0"/>
+      <xs:attribute name="CurrencyCode" use="required" type="def_nonempty_string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RateDescription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ListItem"/>
+      </xs:sequence>
+      <xs:attribute name="Name" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="included services"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- The element UniqueID must have attributes Type="18" and ID -->
+
+  <xs:element name="UniqueID">
+    <xs:complexType>
+      <xs:attribute name="Type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="18"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="ID" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-f]{16}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- The element HotelRef must have at least one of the two attributes HotelCode, HotelName. -->
+
+  <xs:element name="HotelRef">
+    <xs:complexType>
+      <xs:attribute name="HotelCode" type="def_nonempty_string"/>
+      <xs:attribute name="HotelName" type="def_nonempty_string"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- The following are some simple building blocks. -->
+
+  <xs:group name="def_plaintext">
+    <xs:sequence>
+      <xs:element name="Text">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="def_nonempty_string">
+              <xs:attribute name="TextFormat" use="required">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="PlainText"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+              <xs:attributeGroup ref="def_language_attribute"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="def_plaintext_or_html">
+    <xs:sequence>
+      <xs:element name="Text">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="def_nonempty_string">
+              <xs:attribute name="TextFormat" use="required">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="PlainText"/>
+                    <xs:enumeration value="HTML"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+              <xs:attributeGroup ref="def_language_attribute"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:group name="def_optional_urls">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="URL"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="URL">
+    <xs:simpleType>
+      <xs:restriction base="xs:anyURI">
+        <xs:pattern value="https?://.+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:group name="def_images">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="Image"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:element name="Image">
+    <xs:simpleType>
+      <xs:restriction base="xs:anyURI">
+        <xs:pattern value="https?://.+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+</xs:schema>
