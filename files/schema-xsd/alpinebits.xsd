@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.0 - OTA_NotifReportRS besides Success, now also allows Error responses 
+
      v. 2014-04 1.5 - [strictness improvement] made NumberOfGuests attribute mandatory
 
      v. 2014-04 1.4 - [fixed] RatePlans: optional Rate attributes RateTimeUnit and UnitMultiplier added
@@ -735,11 +737,45 @@
 
   <xs:element name="OTA_NotifReportRS">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element name="Success"/>
-      </xs:sequence>
+
+      <xs:choice>
+
+        <!-- choice: Errors {1} -->
+
+        <xs:element name="Errors">
+          <xs:complexType>
+            <xs:sequence>
+   
+              <!-- Errors > Error {1,} -->
+   
+              <xs:element name="Error" maxOccurs="unbounded">
+                <xs:complexType mixed="true">
+                  <xs:attribute name="Type" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="13"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="Code" use="required" type="def_int_ge0"/>
+                </xs:complexType>
+              </xs:element>
+   
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <!-- choice: Success {1} -->
+
+        <xs:sequence>
+          <xs:element name="Success"/>
+        </xs:sequence>
+
+      </xs:choice>
+
       <xs:attribute name="Version" use="required"/>
       <xs:attribute name="TimeStamp"/>
+
     </xs:complexType>
   </xs:element>
 

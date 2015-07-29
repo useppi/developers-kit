@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.0 - OTA_NotifReportRS besides Success, now also allows Error responses 
+
      v. 2014-04 1.4 - [strictness improvement] made BaseByGuestAmt->NumberOfGuests attribute mandatory for
                       RatePlans and SimplePackages, made BaseByGuestAmt->Type attribute mandatory for RatePlans
 
@@ -710,21 +712,50 @@
 
       </rng:element>
 
-
       <!-- GuestRequests: OTA_NotifReportRS -->
 
       <rng:element name="OTA_NotifReportRS">
 
-        <rng:element name="Success">
-          <rng:empty/>
-        </rng:element>
+        <rng:choice>
+
+          <!-- choice: Errors {1} -->
+
+          <rng:element name="Errors">
+
+            <!-- Errors > Error {1,} -->
+
+            <rng:oneOrMore>
+              <rng:element name="Error">
+
+                <rng:attribute name="Type">
+                  <rng:value type="string">13</rng:value>
+                </rng:attribute>
+                <rng:attribute name="Code">
+                  <rng:ref name="def_int_ge0"/>
+                </rng:attribute>
+
+                <rng:text/>
+
+              </rng:element>
+
+            </rng:oneOrMore>
+
+          </rng:element>
+
+          <!-- choice: Success {1} -->
+
+          <rng:element name="Success">
+            <rng:empty/>
+          </rng:element>
+
+        </rng:choice>
 
         <rng:attribute name="xsi:schemaLocation"/>
         <rng:attribute name="Version"/>
         <rng:optional>
           <rng:attribute name="TimeStamp"/>
         </rng:optional>
-
+ 
       </rng:element>
 
 
