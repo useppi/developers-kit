@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2014-04 1.2 - [fixed] RatePlans: optional Rate attributes RateTimeUnit and UnitMultiplier added
+
      v. 2014-04 1.1 - [fixed] GuestRequests: Email->Remark is an optional attribute
                     - [fixed] GuestRequests: ReservationsList can be empty
 
@@ -1542,6 +1544,18 @@
                       <rng:optional>
                         <rng:attribute name="End">
                           <rng:ref name="def_date"/>
+                        </rng:attribute>
+                      </rng:optional>
+                      <rng:optional>
+                        <rng:attribute name="RateTimeUnit">
+                          <rng:choice>
+                            <rng:value type="string">Day</rng:value>
+                          </rng:choice>
+                        </rng:attribute>
+                      </rng:optional>
+                      <rng:optional>
+                        <rng:attribute name="UnitMultiplier">
+                          <rng:ref name="def_int_gt0"/>
                         </rng:attribute>
                       </rng:optional>
                       <rng:optional>
