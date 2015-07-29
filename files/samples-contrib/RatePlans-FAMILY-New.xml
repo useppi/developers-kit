@@ -5,20 +5,20 @@
       <Rates>
         <Rate InvTypeCode="EZ" Start="2014-08-04" End="2014-08-31">
           <BaseByGuestAmts>
-            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="164.56"/>
+            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="164.56" Type="7"/>
           </BaseByGuestAmts>
           <MealsIncluded MealPlanCodes="12" MealPlanIndicator="1"/>
         </Rate>
         <Rate InvTypeCode="EZ" Start="2014-09-01" End="2014-09-30">
           <BaseByGuestAmts>
-            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="146.96"/>
+            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="146.96"  Type="7"/>
           </BaseByGuestAmts>
           <MealsIncluded MealPlanCodes="12" MealPlanIndicator="1"/>
         </Rate>
         <Rate InvTypeCode="DZ" Start="2014-08-04" End="2014-08-31">
           <BaseByGuestAmts>
-            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="176.35"/>
-            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="293.92"/>
+            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="176.35" Type="7"/>
+            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="293.92" Type="7"/>
           </BaseByGuestAmts>
           <AdditionalGuestAmounts>
             <AdditionalGuestAmount AgeQualifyingCode="10" Amount="117.57"/>
@@ -30,8 +30,8 @@
         </Rate>
         <Rate InvTypeCode="DZ" Start="2014-09-01" End="2014-09-30">
           <BaseByGuestAmts>
-            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="155.23"/>
-            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="258.72"/>
+            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="155.23" Type="7"/>
+            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="258.72" Type="7"/>
           </BaseByGuestAmts>
           <AdditionalGuestAmounts>
             <AdditionalGuestAmount AgeQualifyingCode="10" Amount="103.49"/>
@@ -43,8 +43,8 @@
         </Rate>
         <Rate InvTypeCode="DZS" Start="2014-08-04" End="2014-08-31">
           <BaseByGuestAmts>
-            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="181.63"/>
-            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="302.72"/>
+            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="181.63" Type="7"/>
+            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="302.72" Type="7"/>
           </BaseByGuestAmts>
           <AdditionalGuestAmounts>
             <AdditionalGuestAmount AgeQualifyingCode="10" Amount="121.09"/>
@@ -56,8 +56,8 @@
         </Rate>
         <Rate InvTypeCode="DZS" Start="2014-09-01" End="2014-09-30">
           <BaseByGuestAmts>
-            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="160.51"/>
-            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="267.52"/>
+            <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="160.51" Type="7"/>
+            <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="267.52" Type="7"/>
           </BaseByGuestAmts>
           <AdditionalGuestAmounts>
             <AdditionalGuestAmount AgeQualifyingCode="10" Amount="107.01"/>

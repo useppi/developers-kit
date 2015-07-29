@@ -8,9 +8,11 @@
 
      changelog:
 
+     v. 2014-04 1.5 - [strictness improvement] made NumberOfGuests attribute mandatory
+
      v. 2014-04 1.4 - [fixed] RatePlans: optional Rate attributes RateTimeUnit and UnitMultiplier added
 
-     v. 2014-04 1.3 - [fixed] GuestRequests: ReservationsList can be empty
+     v. 2014-04 1.3 - [fixed] GuestRequests: ReservationsList can be empy
 
      v. 2014-04 1.2 - follow-up to fix 1.1 that allowed empty AvailStatusMessages elements too
                       (reverted)
@@ -1062,7 +1064,7 @@
 
                                       <xs:element name="BaseByGuestAmt" maxOccurs="unbounded">
                                         <xs:complexType>
-                                          <xs:attribute name="NumberOfGuests" type="def_int_gt0"/>
+                                          <xs:attribute name="NumberOfGuests" use="required" type="def_int_gt0"/>
                                           <xs:attribute name="AmountAfterTax" type="def_decimal_ge0"/>
                                           <xs:attribute name="CurrencyCode">
                                             <xs:simpleType>
