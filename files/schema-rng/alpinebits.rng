@@ -8,6 +8,9 @@
 
      changelog:
 
+     v. 2014-04 1.3 - [improvement] RatePlans: remove RatePlan->Rate attributes that are not allowed
+                      (problem inherited from the xsd version where Rate is shared with SimplePackages.
+
      v. 2014-04 1.2 - [fixed] RatePlans: optional Rate attributes RateTimeUnit and UnitMultiplier added
 
      v. 2014-04 1.1 - [fixed] GuestRequests: Email->Remark is an optional attribute
@@ -1556,48 +1559,6 @@
                       <rng:optional>
                         <rng:attribute name="UnitMultiplier">
                           <rng:ref name="def_int_gt0"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Mon">
-                          <rng:ref name="def_bool"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Tue">
-                          <rng:ref name="def_bool"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Weds">
-                          <rng:ref name="def_bool"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Thur">
-                          <rng:ref name="def_bool"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Fri">
-                          <rng:ref name="def_bool"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Sat">
-                          <rng:ref name="def_bool"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Sun">
-                          <rng:ref name="def_bool"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="Duration">
-                          <rng:data type="string">
-                            <rng:param name="pattern">P[0-9]+N</rng:param>
-                          </rng:data>
                         </rng:attribute>
                       </rng:optional>
                       <rng:optional>
