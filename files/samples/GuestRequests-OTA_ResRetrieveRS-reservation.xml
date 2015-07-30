@@ -55,6 +55,17 @@
                     </GuestCounts>
 
                     <TimeSpan Start="2012-01-01" End="2012-01-12"/>
+
+                    <Guarantee>
+                        <GuaranteesAccepted>
+                            <GuaranteeAccepted>
+                                <PaymentCard CardCode="VI" Remark="4444333322221111" ExpireDate="1216">
+                                    <CardHolderName>Otto Mustermann</CardHolderName>
+                                </PaymentCard>
+                            </GuaranteeAccepted>
+                        </GuaranteesAccepted>
+                    </Guarantee>
+
                     <Total AmountAfterTax="299" CurrencyCode="EUR"/>
 
                 </RoomStay>

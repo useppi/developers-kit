@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.3 - new section in RoomStays: Guarantee -> GuaranteesAccepted -> GuaranteeAccepted -> PaymentCard
+
      v. 2015-07 1.2 - new section in ResGlobalInfo: Profiles -> ProfileInfo -> Profile -> CompanyInfo
 
      v. 2015-07 1.1 - HotelReservation > RoomStays > RoomStay > RoomTypes > RoomType is now
@@ -282,7 +284,6 @@
 
                           </rng:element>
 
-
                           <!-- HotelReservation > RoomStays > RoomStay > RatePlans {0,1} -->
 
                           <rng:optional>
@@ -391,6 +392,41 @@
                             </rng:optional>
 
                           </rng:element>
+
+                          <!-- HotelReservation > RoomStays > RoomStay > Guarantee {0,1} -->
+
+                          <rng:optional>
+                            <rng:element name="Guarantee">
+                              <rng:element name="GuaranteesAccepted">
+                                <rng:element name="GuaranteeAccepted">
+
+                                  <rng:element name="PaymentCard">
+
+                                    <rng:attribute name="CardCode">
+                                      <rng:data type="string">
+                                        <rng:param name="pattern">[A-Z][A-Z]?</rng:param>
+                                      </rng:data>
+                                    </rng:attribute>
+                                    <rng:attribute name="Remark">
+                                      <rng:data type="string">
+                                        <rng:param name="pattern">[0-9]+</rng:param>
+                                      </rng:data>
+                                    </rng:attribute>
+                                    <rng:attribute name="ExpireDate">
+                                      <rng:data type="string">
+                                        <rng:param name="pattern">[0-9][0-9][0-9][0-9]</rng:param>
+                                      </rng:data>
+                                    </rng:attribute>
+                                    <rng:element name="CardHolderName">
+                                      <rng:ref name="def_nonempty_string"/>
+                                    </rng:element>
+
+                                  </rng:element>
+
+                                </rng:element>
+                              </rng:element>
+                            </rng:element>
+                          </rng:optional>
 
                           <!-- HotelReservation > RoomStays > RoomStay > Total {0,1} -->
 
