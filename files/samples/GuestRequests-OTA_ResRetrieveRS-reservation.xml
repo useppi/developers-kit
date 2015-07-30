@@ -7,6 +7,9 @@
      sample message file
 
      changelog:
+
+     v. 2015-07 1.0 added RoomType -> RoomClassificationCode
+
      v. 2014-04 1.0
 -->
 
@@ -29,7 +32,7 @@
                 <RoomStay>
 
                     <RoomTypes>
-                        <RoomType RoomTypeCode="megasuite"/>
+                        <RoomType RoomTypeCode="megasuite" RoomClassificationCode="42"/>
                     </RoomTypes>
 
                     <RatePlans>

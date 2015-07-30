@@ -8,6 +8,9 @@
 
      changelog:
 
+     v. 2015-07 1.1 - HotelReservation > RoomStays > RoomStay > RoomTypes > RoomType is now
+                      mandatory and has a new optional attribute RoomClassificationCode
+
      v. 2015-07 1.0 - OTA_NotifReportRS besides Success, now also allows Error responses 
 
      v. 2014-04 1.4 - [strictness improvement] made BaseByGuestAmt->NumberOfGuests attribute mandatory for
@@ -258,20 +261,25 @@
 
                           <!-- HotelReservation > RoomStays > RoomStay > RoomTypes {0,1} -->
 
-                          <rng:optional>
-                            <rng:element name="RoomTypes">
+                          <rng:element name="RoomTypes">
 
-                              <!-- HotelReservation > RoomStays > RoomStay > RoomTypes > RoomType {1} -->
+                            <!-- HotelReservation > RoomStays > RoomStay > RoomTypes > RoomType {1} -->
 
-                              <rng:element name="RoomType">
+                            <rng:element name="RoomType">
+                              <rng:optional>
                                 <rng:attribute name="RoomTypeCode">
                                   <rng:ref name="def_nonempty_string"/>
                                 </rng:attribute>
-                              </rng:element>
-
+                              </rng:optional>
+                              <rng:optional>
+                                <rng:attribute name="RoomClassificationCode">
+                                  <rng:ref name="def_int_ge0"/>
+                                </rng:attribute>
+                              </rng:optional>
                             </rng:element>
 
-                          </rng:optional>
+                          </rng:element>
+
 
                           <!-- HotelReservation > RoomStays > RoomStay > RatePlans {0,1} -->
 

@@ -8,6 +8,9 @@
 
      changelog:
 
+     v. 2015-07 1.1 - HotelReservation > RoomStays > RoomStay > RoomTypes > RoomType is now
+                      mandatory and has a new optional attribute RoomClassificationCode
+
      v. 2015-07 1.0 - OTA_NotifReportRS besides Success, now also allows Error responses 
 
      v. 2014-04 1.5 - [strictness improvement] made NumberOfGuests attribute mandatory
@@ -275,7 +278,7 @@
 
                                   <!-- HotelReservation > RoomStays > RoomStay > RoomTypes {0,1} -->
 
-                                  <xs:element name="RoomTypes" minOccurs="0">
+                                  <xs:element name="RoomTypes">
                                     <xs:complexType>
                                       <xs:sequence>
 
@@ -283,7 +286,8 @@
 
                                         <xs:element name="RoomType">
                                           <xs:complexType>
-                                            <xs:attribute name="RoomTypeCode" use="required" type="def_nonempty_string"/>
+                                            <xs:attribute name="RoomTypeCode"           type="def_nonempty_string"/>
+                                            <xs:attribute name="RoomClassificationCode" type="def_int_ge0"/>
                                           </xs:complexType>
                                         </xs:element>
 
