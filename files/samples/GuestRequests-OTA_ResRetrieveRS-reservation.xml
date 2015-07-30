@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.1 added Profile element with ProfileType="4" (Travel Agent) to ResGlobalInfo
+
      v. 2015-07 1.0 added RoomType -> RoomClassificationCode
 
      v. 2014-04 1.0
@@ -139,6 +141,26 @@
                                         ResID_Source="www.example.com"
                                         ResID_SourceContext="top banner" />
                 </HotelReservationIDs>
+
+                <Profiles>
+                    <ProfileInfo>
+                        <!-- ProfileType 4 -> Travel Agent --> 
+                        <Profile ProfileType="4">
+                            <CompanyInfo>
+                                <CompanyName Code="123" CodeContext="ABC">ACME Travel Agency</CompanyName>
+                                <!-- Code 1 -> Voice -->
+                                <AddressInfo>
+                                    <AddressLine>Musterstraße 1</AddressLine>
+                                    <CityName>Flaneid</CityName>
+                                    <PostalCode>12345</PostalCode>
+                                    <CountryName Code="IT"/>
+                                </AddressInfo>
+                                <TelephoneInfo PhoneTechType="1" PhoneNumber="+391234567890"/>
+                                <Email>info@example.com</Email>
+                            </CompanyInfo>
+                        </Profile>
+                    </ProfileInfo>
+                </Profiles>
 
             </ResGlobalInfo>
 

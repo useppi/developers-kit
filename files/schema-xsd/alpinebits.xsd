@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.2 - new section in ResGlobalInfo: Profiles -> ProfileInfo -> Profile -> CompanyInfo
+
      v. 2015-07 1.1 - HotelReservation > RoomStays > RoomStay > RoomTypes > RoomType is now
                       mandatory and has a new optional attribute RoomClassificationCode
 
@@ -640,6 +642,94 @@
                                       <xs:attribute name="ResID_Value" type="def_nonempty_string"/>
                                       <xs:attribute name="ResID_Source" type="def_nonempty_string"/>
                                       <xs:attribute name="ResID_SourceContext" type="def_nonempty_string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+
+                            <!-- HotelReservation > ResGlobalInfo > Profiles {0,1} -->
+
+                            <xs:element name="Profiles" minOccurs="0">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="ProfileInfo">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element name="Profile">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element name="CompanyInfo">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+
+                                                    <xs:element name="CompanyName">
+                                                      <xs:complexType>
+                                                        <xs:simpleContent>
+                                                          <xs:extension base="def_nonempty_string"> 
+                                                            <xs:attribute name="Code"        use="required" type="def_nonempty_string"/>
+                                                            <xs:attribute name="CodeContext" use="required" type="def_nonempty_string"/>
+                                                          </xs:extension>
+                                                        </xs:simpleContent>
+                                                      </xs:complexType>
+                                                    </xs:element>
+
+                                                    <xs:element name="AddressInfo" minOccurs="0">
+                                                      <xs:complexType>
+                                                        <xs:sequence>
+                                                          <xs:element name="AddressLine"  type="def_nonempty_string"/>
+                                                          <xs:element name="CityName"     type="def_nonempty_string"/>
+                                                          <xs:element name="PostalCode"   type="def_nonempty_string"/>
+                                                          <xs:element name="CountryName">
+                                                            <xs:complexType>
+                                                              <xs:attribute name="Code" use="required">
+                                                                <xs:simpleType>
+                                                                  <xs:restriction base="xs:string">
+                                                                    <xs:pattern value="[A-Z][A-Z]"/>
+                                                                  </xs:restriction>
+                                                                </xs:simpleType>
+                                                              </xs:attribute>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                        </xs:sequence>
+                                                      </xs:complexType>
+                                                    </xs:element>
+
+                                                    <xs:element name="TelephoneInfo" minOccurs="0">
+                                                      <xs:complexType>
+                                                        <xs:attribute name="PhoneTechType" use="required">
+                                                          <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                              <xs:pattern value="(1|3|5)"/>
+                                                            </xs:restriction>
+                                                          </xs:simpleType>
+                                                        </xs:attribute>
+                                                        <xs:attribute name="PhoneNumber" use="required">
+                                                          <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                              <xs:pattern value="\+?[0-9]+"/>
+                                                            </xs:restriction>
+                                                          </xs:simpleType>
+                                                        </xs:attribute>
+                                                      </xs:complexType>
+                                                    </xs:element>
+
+                                                    <xs:element name="Email" minOccurs="0" type="def_nonempty_string"/>
+
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="ProfileType" use="required">
+                                              <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="4"/>
+                                                </xs:restriction>
+                                              </xs:simpleType>
+                                            </xs:attribute>
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
                                     </xs:complexType>
                                   </xs:element>
                                 </xs:sequence>

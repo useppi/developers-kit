@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.2 - new section in ResGlobalInfo: Profiles -> ProfileInfo -> Profile -> CompanyInfo
+
      v. 2015-07 1.1 - HotelReservation > RoomStays > RoomStay > RoomTypes > RoomType is now
                       mandatory and has a new optional attribute RoomClassificationCode
 
@@ -637,6 +639,80 @@
                               </rng:attribute>
                             </rng:optional>
 
+                          </rng:element>
+
+                        </rng:element>
+                      </rng:optional>
+
+                      <!-- HotelReservation > ResGlobalInfo > Profiles {0,1} -->
+
+                      <rng:optional>
+                        <rng:element name="Profiles">
+                          <rng:element name="ProfileInfo">
+                            <rng:element name="Profile">
+                          
+                              <rng:attribute name="ProfileType">
+                                <rng:choice>
+                                  <rng:value>4</rng:value>
+                                </rng:choice>
+                              </rng:attribute>
+                          
+                              <rng:element name="CompanyInfo">
+                          
+                                  <rng:element name="CompanyName">
+                                    <rng:ref name="def_nonempty_string"/>
+                                    <rng:attribute name="Code">
+                                      <rng:ref name="def_nonempty_string"/>
+                                    </rng:attribute>
+                                    <rng:attribute name="CodeContext">
+                                      <rng:ref name="def_nonempty_string"/>
+                                    </rng:attribute>
+                                  </rng:element>
+                          
+                                  <rng:optional>
+                                    <rng:element name="AddressInfo">
+                                      <rng:element name="AddressLine">
+                                        <rng:ref name="def_nonempty_string"/>
+                                      </rng:element>
+                                      <rng:element name="CityName">
+                                        <rng:ref name="def_nonempty_string"/>
+                                      </rng:element>
+                                      <rng:element name="PostalCode">
+                                        <rng:ref name="def_nonempty_string"/>
+                                      </rng:element>
+                                      <rng:element name="CountryName">
+                                        <rng:attribute name="Code">
+                                          <rng:data type="string">
+                                            <rng:param name="pattern">[A-Z][A-Z]</rng:param>
+                                          </rng:data>
+                                        </rng:attribute>
+                                      </rng:element>
+                                    </rng:element>
+                                  </rng:optional>
+                          
+                                  <rng:optional>
+                                    <rng:element name="TelephoneInfo">
+                                      <rng:attribute name="PhoneTechType">
+                                        <rng:data type="string">
+                                          <rng:param name="pattern">(1|3|5)</rng:param>
+                                        </rng:data>
+                                      </rng:attribute>
+                                      <rng:attribute name="PhoneNumber">
+                                        <rng:data type="string">
+                                          <rng:param name="pattern">\+?[0-9]+</rng:param>
+                                        </rng:data>
+                                      </rng:attribute>
+                                    </rng:element>
+                                  </rng:optional>
+                                  <rng:optional>
+                                    <rng:element name="Email">
+                                      <rng:ref name="def_email_string"/>
+                                    </rng:element>
+                                  </rng:optional>
+                          
+                              </rng:element>
+                          
+                            </rng:element>
                           </rng:element>
 
                         </rng:element>
