@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.6 - RatePlans: allow optional PrerequisiteInventory element under Supplement element
+
      v. 2015-07 1.5 - Inventory: removed Amenities and added optional Room -> RoomTypeCode
 
      v. 2015-07 1.4 - HotelReservationID -> ResID_Type is not limited to 13 anymore
@@ -1369,6 +1371,12 @@
                           <xs:element name="Supplement" maxOccurs="unbounded">
                             <xs:complexType>
                               <xs:sequence>
+
+                                <xs:element name="PrerequisiteInventory" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:attribute name="InvCode" type="def_nonempty_string" use="required"/>
+                                  </xs:complexType>
+                                </xs:element>
 
                                 <xs:element name="Description" minOccurs="0" maxOccurs="unbounded">
                                   <xs:complexType>
