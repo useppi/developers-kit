@@ -21,6 +21,8 @@
 
      v. 2015-07 1.0 - OTA_NotifReportRS besides Success, now also allows Error responses 
 
+     v. 2014-04 1.5 - [fixed] InvCode attribute in Supplement changed from def_int_ge0 to def_nonempty_string
+
      v. 2014-04 1.4 - [strictness improvement] made BaseByGuestAmt->NumberOfGuests attribute mandatory for
                       RatePlans and SimplePackages, made BaseByGuestAmt->Type attribute mandatory for RatePlans
 
@@ -1768,7 +1770,7 @@
                       </rng:optional>
                       <rng:optional>
                         <rng:attribute name="InvCode">
-                          <rng:ref name="def_int_ge0"/>
+                          <rng:ref name="def_nonempty_string"/>
                         </rng:attribute>
                       </rng:optional>
                       <rng:optional>

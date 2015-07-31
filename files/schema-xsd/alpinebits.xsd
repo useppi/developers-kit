@@ -21,6 +21,8 @@
 
      v. 2015-07 1.0 - OTA_NotifReportRS besides Success, now also allows Error responses 
 
+     v. 2014-04 1.6 - [fixed] InvCode attribute in Supplement changed from def_int_ge0 to def_nonempty_string
+
      v. 2014-04 1.5 - [strictness improvement] made NumberOfGuests attribute mandatory
 
      v. 2014-04 1.4 - [fixed] RatePlans: optional Rate attributes RateTimeUnit and UnitMultiplier added
@@ -1436,7 +1438,7 @@
                                 </xs:simpleType>
                               </xs:attribute>
 
-                              <xs:attribute name="InvCode" type="def_int_ge0"/>
+                              <xs:attribute name="InvCode" type="def_nonempty_string"/>
 
                               <xs:attribute name="MandatoryIndicator" type="def_bool"/>
 
