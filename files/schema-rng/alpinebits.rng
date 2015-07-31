@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.5 - Inventory: removed Amenities and added optional Room -> RoomTypeCode
+
      v. 2015-07 1.4 - HotelReservationID -> ResID_Type is not limited to 13 anymore
 
      v. 2015-07 1.3 - new section in RoomStays: Guarantee -> GuaranteesAccepted -> GuaranteeAccepted -> PaymentCard
@@ -1264,33 +1266,14 @@
 
                 <rng:optional>
                   <rng:element name="Room">
-
                     <rng:attribute name="RoomClassificationCode">
                       <rng:ref name="def_int_gt0"/>
                     </rng:attribute>
-
-                  </rng:element>
-                </rng:optional>
-
-                <!-- SellableProducts > SellableProduct > GuestRoom > Amenities {0,1} -->
-
-                <rng:optional>
-                  <rng:element name="Amenities">
-
-                    <!-- SellableProducts > SellableProduct > GuestRoom > Amenities > Amenity {1} -->
-
-                    <rng:element name="Amenity">
-
-                      <rng:optional>
-                        <rng:attribute name="AmenityCode">
-                          <rng:choice>
-                            <rng:value>26</rng:value>
-                          </rng:choice>
-                        </rng:attribute>
-                      </rng:optional>
-
-                    </rng:element>
-
+                    <rng:optional>
+                      <rng:attribute name="RoomTypeCode">
+                        <rng:ref name="def_nonempty_string"/>
+                      </rng:attribute>
+                    </rng:optional>
                   </rng:element>
                 </rng:optional>
 
