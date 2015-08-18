@@ -12,7 +12,7 @@
 
 <OTA_HotelInvNotifRS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                      xmlns="http://www.opentravel.org/OTA/2003/05" 
-                     xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelInvNotifRS" 
+                     xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelInvNotifRS.xsd" 
                      Version="1.000">
 
     <Success/>
