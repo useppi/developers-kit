@@ -13,3 +13,5 @@ There are however some characteristics that are expected to be valid for every c
 - if you commit XML samples, check that they validate against the provided schema files
 - if you commit XML samples for new messages that are part of a new release, commit the updated schema files first
 - commits may consist of partial changes, but must respect the rules outlined above
+
+The samples directory contains the sample XML files shown in the AlpineBits standard document. The samples-contrib directory contains random samples gathered from and approved by the comunity.
