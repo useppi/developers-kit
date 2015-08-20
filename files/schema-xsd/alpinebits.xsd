@@ -1063,6 +1063,227 @@
 
 
   <!-- ******************************************************************************* -->
+  <!-- * New Inventory (exact name pending)                                            -->
+  <!-- ******************************************************************************* -->
+
+
+  <!-- New Inventory: OTA_HotelDescriptiveContentNotifRQ -->
+  <xs:element name="OTA_HotelDescriptiveContentNotifRQ">
+    <xs:complexType>
+      <xs:sequence>
+
+        <!-- HotelDescriptiveContents -->
+
+        <xs:element name="HotelDescriptiveContents">
+          <xs:complexType>
+            <xs:sequence>
+
+              <!-- HotelDescriptiveContents > HotelDescriptiveContent -->
+
+              <xs:element name="HotelDescriptiveContent">
+                <xs:complexType>
+                  <xs:sequence>
+
+                    <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo -->
+
+                    <xs:element name="FacilityInfo">
+                      <xs:complexType>
+                        <xs:sequence>
+
+                          <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms -->
+
+                          <xs:element name="GuestRooms">
+                            <xs:complexType>
+                              <xs:sequence>
+
+                                <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom -->
+
+                                <xs:element name="GuestRoom" maxOccurs="unbounded" minOccurs="0">
+                                  <xs:complexType>
+                                    <xs:sequence>
+
+                                      <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > TypeRoom -->
+
+                                      <xs:element name="TypeRoom" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="StandardOccupancy" use="optional" type="def_int_gt0"/>
+                                              <xs:attribute name="StandardNumBeds" use="optional" type="def_int_gt0"/>
+                                              <xs:attribute type="def_int_gt0" name="RoomID" use="optional"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+
+                                      <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > Amenities -->
+
+                                      <xs:element name="Amenities" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+
+                                          <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > Amenities > Amenity -->
+
+                                            <xs:element name="Amenity">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute name="RoomAmenityCode" type="def_int_gt0"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+
+                                      <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions -->
+
+                                      <xs:element name="MultimediaDescriptions" minOccurs="0">
+                                        <xs:complexType>
+                                          <xs:sequence>
+
+                                            <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription -->
+
+                                            <xs:element name="MultimediaDescription" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:complexType>
+                                                <xs:sequence>
+
+                                                  <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems -->
+
+                                                  <xs:element name="TextItems" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+
+                                                        <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems > TextItem -->
+
+                                                        <xs:element name="TextItem">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+
+                                                              <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems > TextItem > Description -->
+
+                                                              <xs:element name="Description" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:string" name="TextFormat" use="optional"/>
+                                                                      <xs:attribute type="xs:string" name="Language" use="optional"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+
+                                                  <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems -->
+
+                                                  <xs:element name="ImageItems" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+
+                                                        <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem -->
+
+                                                        <xs:element name="ImageItem">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+
+                                                              <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > ImageFormat -->
+
+                                                              <xs:element name="ImageFormat">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+
+                                                                    <xs:element type="xs:string" name="URL"/>
+                                                                  </xs:sequence>
+                                                                  <xs:attribute type="xs:string" name="DimensionCategory"/>
+                                                                  <xs:attribute type="xs:byte" name="Format"/>
+                                                                  <xs:attribute type="xs:string" name="CopyrightNotice"/>
+                                                                </xs:complexType>
+                                                              </xs:element>
+
+                                                              <!-- HotelDescriptiveContents > HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > Description -->
+
+                                                              <xs:element name="Description" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:string" name="Language" use="optional"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+
+                                                            </xs:sequence>
+                                                            <xs:attribute type="xs:byte" name="Category"/>
+                                                          </xs:complexType>
+                                                        </xs:element>
+
+                                                      </xs:sequence>
+                                                      <xs:attribute type="xs:string" name="ID"/>
+                                                      <xs:attribute type="xs:byte" name="AdditionalDetailCode"/>
+                                                    </xs:complexType>
+                                                  </xs:element>
+
+                                                </xs:sequence>
+                                                <xs:attribute type="xs:string" name="ID" use="optional"/>
+                                                <xs:attribute type="xs:byte" name="InfoCode" use="optional"/>
+                                                <xs:attribute type="xs:byte" name="AdditionalDetailCode"/>
+                                              </xs:complexType>
+                                            </xs:element>
+
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+
+                                  </xs:sequence>
+                                  <xs:attribute name="Code" use="optional" type="def_nonempty_string"/>
+                                  <xs:attribute name="MaxAdultOccupancy" use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="MaxChildOccupancy" use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="MaxOccupancy"      use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="MinOccupancy"      use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="MaxCribs"          use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="MaxRollaways"      use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="Size"              use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="SizeMeasurement"   use="optional" type="def_nonempty_string" />
+                                  <xs:attribute name="Floor"             use="optional" type="def_int_gt0" />
+                                  <xs:attribute name="NonSmoking"        use="optional" type="def_nonempty_string" />
+                                </xs:complexType>
+                              </xs:element>
+
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="HotelCode"/>
+                  <xs:attribute type="xs:string" name="HotelName"/>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+
+      <xs:attribute name="Version" use="required"/>
+      <xs:attribute name="TimeStamp"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- ******************************************************************************* -->
   <!-- * SimplePackages & RatePlans                                                    -->
   <!-- ******************************************************************************* -->
 
