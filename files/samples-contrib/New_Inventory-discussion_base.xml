@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelDescriptiveContentNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="5.000" TimeStamp="2014-10-16T17:00:40" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelDescriptiveContentNotifRQ.xsd">
+   <HotelDescriptiveContents>
+     <HotelDescriptiveContent HotelCode="x" HotelName="Hotel">
+     <FacilityInfo>
+        <GuestRooms>
+	  <!--
+		Other options:
+		  Composite: for rooms that can be combined into one
+		  Quantity: Used to define the quantity for an associated element or attribute.
+		  Sort: display order (I think it's better to put this in the descriptive part)
+          -->
+	  <GuestRoom Code="DZ" MaxAdultOccupancy="2" MaxChildOccupancy="1" MaxOccupancy="2" MinOccupancy="1">
+	    <!--
+                Other options:
+		  MaxCribs: Maximum number of cribs allowed in a room type.
+		  MaxRollaways: Maximum number of rollaway beds allowed in a room type.
+		  Size: Number of square units (feet or meters) that defines the size of a room type.
+		  SizeMeasurement: Textual description of room dimensions. Code list value from OTA Code list for Row Attributes. Refer to OTA Code List: Air Row Type (ROW). (DGDG: this table makes no sense to me as it's related to Airplanes!)
+		  Floor: 	Floor on which the room is located.Used for Numeric values, from 1 to 999 inclusive.
+		  NonSmoking: Non-smoking indicator.
+
+	    -->
+	    <TypeRoom StandardOccupancy="2" StandardNumBeds="2" />
+	    <Amenities>
+	      <!-- NB: RoomAmenityCode vs. AmenityCode we were using before -->
+	      <Amenity RoomAmenityCode="26"/>
+	    </Amenities>
+	    <MultimediaDescriptions>
+	      <!--
+                   Options:
+                     Removal: If true, this item is obsolete and should be removed from the receiving system.
+
+
+                   InfoCode:
+                     1  - Description
+                     2  - Policy
+                     17 - Short description
+                     23 - Pictures
+                     25 - Long name
+                     ... it's a long list. See table "INF"
+
+                   AdditionalDetailCode
+                     4  - Room information
+                     14 - Miscellaneous information
+                     ... it's a long list. See table "ADT"
+
+                -->
+	      <MultimediaDescription ID="NAME" InfoCode="25">
+	        <TextItems>
+		  <TextItem>
+		    <Description TextFormat="PlainText" Language="de">
+		      Doppelzimmer
+		    </Description>
+		    <Description TextFormat="PlainText" Language="it">
+		      Camera doppia
+		    </Description>
+		  </TextItem>
+		</TextItems>
+	      </MultimediaDescription>
+	      <MultimediaDescription ID="DESCRIPTION" InfoCode="1">
+	        <TextItems>
+		  <TextItem>
+		    <Description TextFormat="PlainText" Language="de">
+		      The description we were missing in the previous message.
+		    </Description>
+		    <Description TextFormat="PlainText" Language="it">
+		      The description we were missing in the previous message.
+		    </Description>
+		  </TextItem>
+		</TextItems>
+	      </MultimediaDescription>
+              <MultimediaDescription ID="PICTURES">
+                <ImageItems>
+                  <ImageItem Category="6">
+                    <ImageFormat DimensionCategory="original" Format="6" CopyrightNotice="NB: notice untranslatable">
+                      <URL>
+                        http://www.placekitten.com/1100/700
+                      </URL>
+                    </ImageFormat>
+                    <Description Language="de">
+                      Zimmerbild
+                    </Description>
+                    <Description Language="it">
+                      immagine della stanza
+                    </Description>
+                  </ImageItem>
+                </ImageItems>
+              </MultimediaDescription>
+	    </MultimediaDescriptions>
+	  </GuestRoom>
+	  <GuestRoom Code="DZ">
+	    <TypeRoom RoomID="101"/>
+	  </GuestRoom>
+	  <GuestRoom Code="DZ">
+	    <TypeRoom RoomID="102"/>
+	  </GuestRoom>
+	  <GuestRoom Code="DZ">
+	    <TypeRoom RoomID="103"/>
+	  </GuestRoom>
+	  <GuestRoom Code="DZ">
+	    <TypeRoom RoomID="104"/>
+	  </GuestRoom>
+	  <GuestRoom Code="DZ">
+	    <TypeRoom RoomID="105"/>
+	  </GuestRoom>
+	</GuestRooms>
+     </FacilityInfo>
+     </HotelDescriptiveContent>
+   </HotelDescriptiveContents>
+</OTA_HotelDescriptiveContentNotifRQ> 
