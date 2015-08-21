@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.8 - added section for New Inventory (exact name pending)
+
      v. 2015-07 1.7 - allowed more than one HotelReservationID
 
      v. 2015-07 1.6 - RatePlans: allow optional PrerequisiteInventory element under Supplement element
