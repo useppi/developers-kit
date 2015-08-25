@@ -137,7 +137,7 @@
                       <xs:complexType>
                         <xs:attribute name="Start"        use="required" type="def_date"/>
                         <xs:attribute name="End"          use="required" type="def_date"/>
-                        <xs:attribute name="InvTypeCode"                 type="def_nonempty_string"/>
+                        <xs:attribute name="InvTypeCode"                 type="def_invTypeCode_string"/>
                         <xs:attribute name="InvCode"                     type="def_nonempty_string"/>
                       </xs:complexType>
                     </xs:element>
@@ -302,7 +302,7 @@
 
                                         <xs:element name="RoomType">
                                           <xs:complexType>
-                                            <xs:attribute name="RoomTypeCode"           type="def_nonempty_string"/>
+                                            <xs:attribute name="RoomTypeCode"           type="def_invTypeCode_string"/>
                                             <xs:attribute name="RoomClassificationCode" type="def_int_ge0"/>
                                           </xs:complexType>
                                         </xs:element>
@@ -1035,7 +1035,7 @@
                     </xs:element>
 
                   </xs:sequence>
-                  <xs:attribute name="InvTypeCode" use="required" type="def_nonempty_string"/>
+                  <xs:attribute name="InvTypeCode" use="required" type="def_invTypeCode_string"/>
                   <xs:attribute name="InvCode"                    type="def_nonempty_string"/>
                 </xs:complexType>
               </xs:element>
@@ -1578,7 +1578,7 @@
                                   </xs:restriction>
                                 </xs:simpleType>
                               </xs:attribute>
-                              <xs:attribute name="InvTypeCode" type="def_nonempty_string"/>
+                              <xs:attribute name="InvTypeCode" type="def_invTypeCode_string"/>
 
                             </xs:complexType>
                           </xs:element>
@@ -1978,6 +1978,15 @@
   <xs:simpleType name="def_email_string">
     <xs:restriction base="xs:string">
       <xs:pattern value="\S+@\S+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- String type defining Rooms InvTypeCode  -->
+
+  <xs:simpleType name="def_invTypeCode_string">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="16"/>
     </xs:restriction>
   </xs:simpleType>
 
