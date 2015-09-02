@@ -1235,7 +1235,7 @@
                                                   </xs:element>
 
                                                 </xs:sequence>
-                                                <xs:attribute type="xs:string" name="ID" use="optional"/>
+                                                <xs:attribute type="xs:string" name="ID"/>
                                                 <xs:attribute type="xs:byte" name="InfoCode" use="optional"/>
                                                 <xs:attribute type="xs:byte" name="AdditionalDetailCode"/>
                                               </xs:complexType>
@@ -1246,7 +1246,7 @@
                                       </xs:element>
 
                                   </xs:sequence>
-                                  <xs:attribute name="Code" use="optional" type="def_nonempty_string"/>
+                                  <xs:attribute name="Code"              type="def_nonempty_string"/>
                                   <xs:attribute name="MaxAdultOccupancy" use="optional" type="def_int_gt0" />
                                   <xs:attribute name="MaxChildOccupancy" use="optional" type="def_int_gt0" />
                                   <xs:attribute name="MaxOccupancy"      use="optional" type="def_int_gt0" />
@@ -1285,6 +1285,17 @@
     </xs:complexType>
   </xs:element>
 
+  <!-- New Inventory: OTA_HotelDescriptiveContentNotifRS -->
+	
+  <xs:element name="OTA_HotelDescriptiveContentNotifRS">
+    <xs:complexType>
+      <xs:group   ref="def_generic_response"/>
+      <xs:attribute name="Version" use="required"/>
+      <xs:attribute name="TimeStamp"/>
+    </xs:complexType>
+  </xs:element>
+	
+	
   <!-- ******************************************************************************* -->
   <!-- * SimplePackages & RatePlans                                                    -->
   <!-- ******************************************************************************* -->
