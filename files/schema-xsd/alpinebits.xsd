@@ -1143,7 +1143,6 @@
                                           <xs:simpleContent>
                                             <xs:extension base="xs:string">
                                               <xs:attribute name="StandardOccupancy" use="optional" type="def_int_gt0"/>
-                                              <xs:attribute name="StandardNumBeds" use="optional" type="def_int_gt0"/>
                                               <xs:attribute type="def_int_gt0" name="RoomID" use="optional"/>
                                             </xs:extension>
                                           </xs:simpleContent>
@@ -1267,9 +1266,7 @@
                                                   </xs:element>
 
                                                 </xs:sequence>
-                                                <xs:attribute type="xs:string" name="ID"/>
                                                 <xs:attribute type="xs:byte" name="InfoCode" use="optional"/>
-                                                <xs:attribute type="xs:byte" name="AdditionalDetailCode"/>
                                               </xs:complexType>
                                             </xs:element>
 
@@ -1279,16 +1276,8 @@
 
                                   </xs:sequence>
                                   <xs:attribute name="Code"              type="def_nonempty_string"/>
-                                  <xs:attribute name="MaxAdultOccupancy" use="optional" type="def_int_gt0" />
-                                  <xs:attribute name="MaxChildOccupancy" use="optional" type="def_int_gt0" />
                                   <xs:attribute name="MaxOccupancy"      use="optional" type="def_int_gt0" />
                                   <xs:attribute name="MinOccupancy"      use="optional" type="def_int_gt0" />
-                                  <xs:attribute name="MaxCribs"          use="optional" type="def_int_gt0" />
-                                  <xs:attribute name="MaxRollaways"      use="optional" type="def_int_gt0" />
-                                  <xs:attribute name="Size"              use="optional" type="def_int_gt0" />
-                                  <xs:attribute name="SizeMeasurement"   use="optional" type="def_nonempty_string" />
-                                  <xs:attribute name="Floor"             use="optional" type="def_int_gt0" />
-                                  <xs:attribute name="NonSmoking"        use="optional" type="def_nonempty_string" />
                                 </xs:complexType>
                               </xs:element>
 
