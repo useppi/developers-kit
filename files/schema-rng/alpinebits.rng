@@ -8,6 +8,10 @@
 
      changelog:
 
+     v. 2015-07 1.8 - GuestRequests: use CardNumber -> PlainText instead of the Remark attribute of
+                      PaymentCard under Guarantee; add BasicPropertyInfo element at the end of the 
+                      ResGlobalInfo block for OTA-2015A compatiblity
+
      v. 2015-07 1.7 - allowed more than one HotelReservationID
 
      v. 2015-07 1.6 - RatePlans: allow optional PrerequisiteInventory element under Supplement element
@@ -417,18 +421,20 @@
                                         <rng:param name="pattern">[A-Z][A-Z]?</rng:param>
                                       </rng:data>
                                     </rng:attribute>
-                                    <rng:attribute name="Remark">
-                                      <rng:data type="string">
-                                        <rng:param name="pattern">[0-9]+</rng:param>
-                                      </rng:data>
-                                    </rng:attribute>
                                     <rng:attribute name="ExpireDate">
                                       <rng:data type="string">
                                         <rng:param name="pattern">[0-9][0-9][0-9][0-9]</rng:param>
                                       </rng:data>
                                     </rng:attribute>
+
                                     <rng:element name="CardHolderName">
                                       <rng:ref name="def_nonempty_string"/>
+                                    </rng:element>
+
+                                    <rng:element name="CardNumber">
+                                      <rng:element name="PlainText">
+                                        <rng:ref name="def_nonempty_string"/>
+                                      </rng:element>
                                     </rng:element>
 
                                   </rng:element>
@@ -763,6 +769,10 @@
 
                         </rng:element>
                       </rng:optional>
+
+                      <rng:element name="BasicPropertyInfo">
+                        <rng:empty/>
+                      </rng:element>
 
                     </rng:element>
                   </rng:optional>

@@ -8,6 +8,10 @@
 
      changelog:
 
+     v. 2015-07 1.9 - GuestRequests: use CardNumber -> PlainText instead of the Remark attribute of
+                      PaymentCard under Guarantee; add BasicPropertyInfo element at the end of the 
+                      ResGlobalInfo block for OTA-2015A compatiblity
+
      v. 2015-07 1.8 - added section for New Inventory (exact name pending)
 
      v. 2015-07 1.7 - allowed more than one HotelReservationID
@@ -421,18 +425,18 @@
                                                       <xs:complexType>
                                                         <xs:sequence>
                                                           <xs:element name="CardHolderName" type="def_nonempty_string"/>
+                                                          <xs:element name="CardNumber">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element name="PlainText" type="def_nonempty_string"/>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
                                                         </xs:sequence>
                                                         <xs:attribute name="CardCode" use="required">
                                                           <xs:simpleType>
                                                             <xs:restriction base="xs:string">
                                                               <xs:pattern value="[A-Z][A-Z]?"/>
-                                                            </xs:restriction>
-                                                          </xs:simpleType>
-                                                        </xs:attribute>
-                                                        <xs:attribute name="Remark" use="required">
-                                                          <xs:simpleType>
-                                                            <xs:restriction base="xs:string">
-                                                              <xs:pattern value="[0-9]+"/>
                                                             </xs:restriction>
                                                           </xs:simpleType>
                                                         </xs:attribute>
@@ -794,6 +798,10 @@
                                 </xs:sequence>
                               </xs:complexType>
                             </xs:element>
+
+
+                            <xs:element name="BasicPropertyInfo"/>
+
 
                           </xs:sequence>
                         </xs:complexType>
