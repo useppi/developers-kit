@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.0 - allow Warnings in OTA_NotifReportRQ messages
+
      v. 2015-07 1.9 - GuestRequests: use CardNumber -> PlainText instead of the Remark attribute of
                       PaymentCard under Guarantee; add BasicPropertyInfo element at the end of the 
                       ResGlobalInfo block for OTA-2015A compatiblity
@@ -842,7 +844,21 @@
 
         <xs:element name="Success"/>
 
-        <xs:element name="NotifDetails">
+        <xs:element name="Warnings" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Warning" maxOccurs="unbounded">
+                <xs:complexType mixed="true">
+                  <xs:attribute name="Type"     use="required" type="def_int_gt0"/>
+                  <xs:attribute name="Code"     use="required" type="def_int_gt0"/>
+                  <xs:attribute name="RecordID" use="required" type="def_nonempty_string"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="NotifDetails" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
 

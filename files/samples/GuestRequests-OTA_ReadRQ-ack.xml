@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
-     AlpineBits 2014-04
+     AlpineBits 2015-07
      http://www.alpinebits.org/
 
      sample message file
 
      changelog:
+     v. 2015-07 1.0
      v. 2014-04 1.0
 -->
 
@@ -16,6 +17,11 @@
                    Version="1.000">
 
     <Success/>
+
+    <Warnings>
+        <!-- refuse reservation with ID=f054bbd2f5ebab9 -->
+        <Warning Type="3" Code="450" RecordID="f054bbd2f5ebab9">Unable to process reservation</Warning>
+    </Warnings>
 
     <NotifDetails>
         <HotelNotifReport>

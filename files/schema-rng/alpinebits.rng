@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 1.9 - allow Warnings in OTA_NotifReportRQ messages
+
      v. 2015-07 1.8 - GuestRequests: use CardNumber -> PlainText instead of the Remark attribute of
                       PaymentCard under Guarantee; add BasicPropertyInfo element at the end of the 
                       ResGlobalInfo block for OTA-2015A compatiblity
@@ -812,37 +814,68 @@
           <rng:empty/>
         </rng:element>
 
-        <rng:element name="NotifDetails">
+        <rng:optional>
+          <rng:element name="Warnings">
+        
+            <!-- Warnings > Warning {1,} -->
 
-          <rng:element name="HotelNotifReport">
+            <rng:oneOrMore>
+              <rng:element name="Warning">
+          
+                <rng:attribute name="Type">
+                  <rng:ref name="def_int_gt0"/>
+                </rng:attribute>
 
-            <rng:element name="HotelReservations">
+                <rng:attribute name="Code">
+                  <rng:ref name="def_int_gt0"/>
+                </rng:attribute>
 
-              <rng:oneOrMore>
-                <rng:element name="HotelReservation">
+                  <rng:attribute name="RecordID">
+                    <rng:ref name="def_nonempty_string"/>
+                  </rng:attribute>
 
-                  <rng:element name="UniqueID">
+                <rng:text/>
+          
+              </rng:element>
+            </rng:oneOrMore>
 
-                    <rng:attribute name="Type">
-                      <rng:choice>
-                        <rng:value>14</rng:value>
-                        <rng:value>15</rng:value>
-                      </rng:choice>
-                    </rng:attribute>
-                    <rng:attribute name="ID">
-                      <rng:ref name="def_nonempty_string"/>
-                    </rng:attribute>
+          </rng:element>
+        </rng:optional>
+
+        <rng:optional>
+          <rng:element name="NotifDetails">
+
+            <rng:element name="HotelNotifReport">
+
+              <rng:element name="HotelReservations">
+
+                <rng:oneOrMore>
+                  <rng:element name="HotelReservation">
+
+                    <rng:element name="UniqueID">
+
+                      <rng:attribute name="Type">
+                        <rng:choice>
+                          <rng:value>14</rng:value>
+                          <rng:value>15</rng:value>
+                        </rng:choice>
+                      </rng:attribute>
+                      <rng:attribute name="ID">
+                        <rng:ref name="def_nonempty_string"/>
+                      </rng:attribute>
+
+                    </rng:element>
 
                   </rng:element>
+                </rng:oneOrMore>
 
-                </rng:element>
-              </rng:oneOrMore>
+              </rng:element>
 
             </rng:element>
 
           </rng:element>
 
-        </rng:element>
+        </rng:optional>
 
         <rng:attribute name="xsi:schemaLocation"/>
         <rng:attribute name="Version"/>
