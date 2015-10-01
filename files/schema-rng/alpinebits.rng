@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.0 - GuestRequests: ResGuests >> Customer: attributes Gender and Language are now optional
+
      v. 2015-07 1.9 - allow Warnings in OTA_NotifReportRQ messages
 
      v. 2015-07 1.8 - GuestRequests: use CardNumber -> PlainText instead of the Remark attribute of
@@ -574,21 +576,25 @@
                                   </rng:element>
                                 </rng:optional>
 
-                                <rng:attribute name="Gender">
-                                  <rng:data type="string">
-                                    <rng:param name="pattern">(Unknown|Male|Female)</rng:param>
-                                  </rng:data>
-                                </rng:attribute>
+                                <rng:optional>
+                                  <rng:attribute name="Gender">
+                                    <rng:data type="string">
+                                      <rng:param name="pattern">(Unknown|Male|Female)</rng:param>
+                                    </rng:data>
+                                  </rng:attribute>
+                                </rng:optional>
                                 <rng:optional>
                                   <rng:attribute name="BirthDate">
                                     <rng:ref name="def_date"/>
                                   </rng:attribute>
                                 </rng:optional>
-                                <rng:attribute name="Language">
-                                  <rng:data type="language">
-                                    <rng:param name="pattern">[a-z][a-z]</rng:param>
-                                  </rng:data>
-                                </rng:attribute>
+                                <rng:optional>
+                                  <rng:attribute name="Language">
+                                    <rng:data type="language">
+                                      <rng:param name="pattern">[a-z][a-z]</rng:param>
+                                    </rng:data>
+                                  </rng:attribute>
+                                </rng:optional>
 
                               </rng:element>
                             </rng:element>

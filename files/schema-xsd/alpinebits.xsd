@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.1 - GuestRequests: ResGuests >> Customer: attributes Gender and Language are now optional
+
      v. 2015-07 2.0 - allow Warnings in OTA_NotifReportRQ messages
 
      v. 2015-07 1.9 - GuestRequests: use CardNumber -> PlainText instead of the Remark attribute of
@@ -586,7 +588,7 @@
                                                           </xs:element>
 
                                                         </xs:sequence>
-                                                        <xs:attribute name="Gender" use="required">
+                                                        <xs:attribute name="Gender">
                                                           <xs:simpleType>
                                                             <xs:restriction base="xs:string">
                                                               <xs:pattern value="(Unknown|Male|Female)"/>
@@ -594,7 +596,7 @@
                                                           </xs:simpleType>
                                                         </xs:attribute>
                                                         <xs:attribute name="BirthDate" type="def_date"/>
-                                                        <xs:attribute name="Language" use="required">
+                                                        <xs:attribute name="Language">
                                                           <xs:simpleType>
                                                             <xs:restriction base="xs:language">
                                                               <xs:pattern value="[a-z][a-z]"/>
