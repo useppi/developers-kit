@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.2 - changes to Supplement: a few attributes are removed and many attributes are made optional
+
      v. 2015-07 2.1 - RatePlans/Supplements: changed format of description
 
      v. 2015-07 2.0 - GuestRequests: ResGuests >> Customer: attributes Gender and Language are now optional
@@ -1771,14 +1773,6 @@
                   <rng:oneOrMore>
                     <rng:element name="Supplement">
 
-                      <rng:optional>
-                        <rng:element name="PrerequisiteInventory">
-                          <rng:attribute name="InvCode">
-                            <rng:ref name="def_nonempty_string"/>
-                          </rng:attribute>
-                        </rng:element>
-                      </rng:optional>
-
                       <rng:zeroOrMore>
                         <rng:element name="Description">
 
@@ -1813,32 +1807,35 @@
                         </rng:element>
                       </rng:zeroOrMore>
 
-                      <rng:attribute name="AddToBasicRateIndicator">
-                        <rng:choice>
-                          <rng:value>1</rng:value>
-                          <rng:value>true</rng:value>
-                        </rng:choice>
-                      </rng:attribute>
-                      <rng:attribute name="ChargeTypeCode">
-                        <rng:choice>
-                          <rng:value>1</rng:value>
-                          <rng:value>12</rng:value>
-                          <rng:value>18</rng:value>
-                          <rng:value>19</rng:value>
-                          <rng:value>20</rng:value>
-                          <rng:value>21</rng:value>
-                          <rng:value>24</rng:value>
-                        </rng:choice>
-                      </rng:attribute>
-                      <rng:attribute name="SupplementType">
-                        <rng:choice>
-                          <rng:value>Extra</rng:value>
-                          <rng:value>Board</rng:value>
-                        </rng:choice>
-                      </rng:attribute>
-                      <rng:attribute name="Amount">
-                        <rng:ref name="def_decimal_ge0"/>
-                      </rng:attribute>
+                      <rng:optional>
+                        <rng:attribute name="AddToBasicRateIndicator">
+                          <rng:choice>
+                            <rng:value>1</rng:value>
+                            <rng:value>true</rng:value>
+                          </rng:choice>
+                        </rng:attribute>
+                      </rng:optional>
+
+                      <rng:optional>
+                        <rng:attribute name="ChargeTypeCode">
+                          <rng:choice>
+                            <rng:value>1</rng:value>
+                            <rng:value>12</rng:value>
+                            <rng:value>18</rng:value>
+                            <rng:value>19</rng:value>
+                            <rng:value>20</rng:value>
+                            <rng:value>21</rng:value>
+                            <rng:value>24</rng:value>
+                          </rng:choice>
+                        </rng:attribute>
+                      </rng:optional>
+                   
+                      <rng:optional>
+                        <rng:attribute name="Amount">
+                          <rng:ref name="def_decimal_ge0"/>
+                        </rng:attribute>
+                      </rng:optional>
+
                       <rng:optional>
                         <rng:attribute name="InvType">
                           <rng:choice>
@@ -1847,36 +1844,25 @@
                           </rng:choice>
                         </rng:attribute>
                       </rng:optional>
+
                       <rng:optional>
                         <rng:attribute name="InvCode">
                           <rng:ref name="def_nonempty_string"/>
                         </rng:attribute>
                       </rng:optional>
+
                       <rng:optional>
                         <rng:attribute name="MandatoryIndicator">
                           <rng:ref name="def_bool"/>
                         </rng:attribute>
                       </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="AgeQualifyingCode">
-                          <rng:ref name="def_int_gt0"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="MinAge">
-                          <rng:ref name="def_int_gt0"/>
-                        </rng:attribute>
-                      </rng:optional>
-                      <rng:optional>
-                        <rng:attribute name="MaxAge">
-                          <rng:ref name="def_int_gt0"/>
-                        </rng:attribute>
-                      </rng:optional>
+
                       <rng:optional>
                         <rng:attribute name="Start">
                           <rng:ref name="def_date"/>
                         </rng:attribute>
                       </rng:optional>
+
                       <rng:optional>
                         <rng:attribute name="End">
                           <rng:ref name="def_date"/>

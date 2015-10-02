@@ -63,8 +63,8 @@
             </Rates>
 
             <Supplements>
-            
-                <Supplement AddToBasicRateIndicator="true" ChargeTypeCode="18" SupplementType="Extra" Amount="20" InvType="ALPINEBITSEXTRA" InvCode="0" Start="2014-10-01" End="2014-10-11" >
+
+                <Supplement InvType="EXTRA" InvCode="0x539" AddToBasicRateIndicator="true" MandatoryIndicator="true" ChargeTypeCode="18">
                     <Description Name="title">
                         <Text TextFormat="PlainText" Language="de">Endreinigung</Text>
                         <Text TextFormat="PlainText" Language="it">Pulizia finale</Text>
@@ -76,6 +76,9 @@
                         <!-- more languages ... -->
                     </Description>
                 </Supplement>
+
+                <Supplement InvType="EXTRA" InvCode="0x539" Amount="20" Start="2014-10-01" End="2014-10-11"/>
+
             </Supplements>
 
             <Offers>
