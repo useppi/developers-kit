@@ -1786,7 +1786,11 @@
                             <rng:choice>
 
                               <rng:element name="Text">
-
+                                <rng:attribute name="TextFormat">
+                                  <rng:choice>
+                                    <rng:value>PlainText</rng:value>
+                                  </rng:choice>
+                                </rng:attribute>
                                 <rng:ref name="def_nonempty_string"/>
                                 <rng:attribute name="Language">
                                   <rng:data type="language">

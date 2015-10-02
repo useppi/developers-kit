@@ -1650,6 +1650,13 @@
                                           <xs:complexType>                    
                                              <xs:simpleContent>                
                                                <xs:extension base="def_nonempty_string">
+                                                 <xs:attribute name="TextFormat" use="required">
+                                                   <xs:simpleType>             
+                                                     <xs:restriction base="xs:string">
+                                                       <xs:enumeration value="PlainText"/>
+                                                     </xs:restriction>         
+                                                   </xs:simpleType>            
+                                                 </xs:attribute>               
                                                  <xs:attribute name="Language" use="required">
                                                    <xs:simpleType>             
                                                      <xs:restriction base="xs:language">
