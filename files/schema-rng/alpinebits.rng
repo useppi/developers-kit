@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.1 - RatePlans/Supplements: changed format of description
+
      v. 2015-07 2.0 - GuestRequests: ResGuests >> Customer: attributes Gender and Language are now optional
 
      v. 2015-07 1.9 - allow Warnings in OTA_NotifReportRQ messages
@@ -1781,17 +1783,27 @@
                         <rng:element name="Description">
 
                           <rng:oneOrMore>
-                            <rng:element name="Text">
+                            <rng:choice>
+
+                              <rng:element name="Text">
 
                                 <rng:ref name="def_nonempty_string"/>
+                                <rng:attribute name="Language">
+                                  <rng:data type="language">
+                                    <rng:param name="pattern">[a-z][a-z]</rng:param>
+                                  </rng:data>
+                                </rng:attribute>
 
-                            </rng:element>
+                              </rng:element>
+
+                            </rng:choice>
                           </rng:oneOrMore>
 
-                          <rng:attribute name="Language">
-                            <rng:data type="language">
-                              <rng:param name="pattern">[a-z][a-z]</rng:param>
-                            </rng:data>
+                          <rng:attribute name="Name">
+                            <rng:choice>
+                              <rng:value>title</rng:value>
+                              <rng:value>intro</rng:value>
+                            </rng:choice>
                           </rng:attribute>
 
                         </rng:element>

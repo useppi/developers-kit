@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.2 - RatePlans/Supplements: changed format of description
+
      v. 2015-07 2.1 - GuestRequests: ResGuests >> Customer: attributes Gender and Language are now optional
 
      v. 2015-07 2.0 - allow Warnings in OTA_NotifReportRQ messages
@@ -1640,27 +1642,38 @@
                                   </xs:complexType>
                                 </xs:element>
 
-                                <xs:element name="Description" minOccurs="0" maxOccurs="unbounded">
+                                <xs:element name="Description" minOccurs="0" maxOccurs="2">
                                   <xs:complexType>
-                                    <xs:sequence>
 
-                                      <xs:element name="Text" maxOccurs="unbounded">
-                                        <xs:complexType>                    
-                                           <xs:simpleContent>                
-                                             <xs:extension base="def_nonempty_string"/>
-                                           </xs:simpleContent>               
-                                         </xs:complexType>                   
-                                      </xs:element>
-       
+                                    <xs:sequence maxOccurs="unbounded">
+                                        <xs:element name="Text" maxOccurs="unbounded">
+                                          <xs:complexType>                    
+                                             <xs:simpleContent>                
+                                               <xs:extension base="def_nonempty_string">
+                                                 <xs:attribute name="Language" use="required">
+                                                   <xs:simpleType>             
+                                                     <xs:restriction base="xs:language">
+                                                       <xs:pattern value="[a-z][a-z]"/>
+                                                     </xs:restriction>         
+                                                   </xs:simpleType>            
+                                                 </xs:attribute>               
+                                               </xs:extension>                 
+                                             </xs:simpleContent>               
+                                           </xs:complexType>                   
+                                        </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute name="Language" use="required">
-                                      <xs:simpleType>             
-                                        <xs:restriction base="xs:language">
-                                          <xs:pattern value="[a-z][a-z]"/>
-                                        </xs:restriction>         
-                                      </xs:simpleType>            
-                                    </xs:attribute>               
+
+                                    <xs:attribute name="Name" use="required">
+                                      <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                          <xs:enumeration value="title"/>
+                                          <xs:enumeration value="intro"/>
+                                        </xs:restriction>
+                                      </xs:simpleType>
+                                    </xs:attribute>
+
                                   </xs:complexType>
+
                                 </xs:element>
 
                               </xs:sequence>
