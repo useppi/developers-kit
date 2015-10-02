@@ -90,7 +90,7 @@
                 <Offer>
                     <Discount Percent="100"/>
                     <Guests>
-                        <Guest AgeQualifyingCode="8" MaxAge="5" FirstQualifyingPosition="1" LastQualifyingPosition="1" />
+                        <Guest AgeQualifyingCode="8" MaxAge="5" FirstQualifyingPosition="1" LastQualifyingPosition="1" MinCount="1"/>
                     </Guests>
                 </Offer> 
 

@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.3 - added MinCount attribute to Offer>>Guest
+
      v. 2015-07 2.2 - changes to Supplement: a few attributes are removed and many attributes are made optional
 
      v. 2015-07 2.1 - RatePlans/Supplements: changed format of description
@@ -1918,6 +1920,9 @@
                             </rng:attribute>
                             <rng:attribute name="MaxAge">
                               <rng:ref name="def_int_gt0"/>
+                            </rng:attribute>
+                            <rng:attribute name="MinCount">
+                              <rng:ref name="def_int_ge0"/>
                             </rng:attribute>
                             <rng:attribute name="FirstQualifyingPosition">
                               <rng:choice>

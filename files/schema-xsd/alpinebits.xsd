@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.4 - added MinCount attribute to Offer>>Guest
+
      v. 2015-07 2.3 - changes to Supplement: a few attributes are removed and many attributes are made optional
 
      v. 2015-07 2.2 - RatePlans/Supplements: changed format of description
@@ -1768,6 +1770,7 @@
                                         <xs:complexType>
                                           <xs:attribute name="AgeQualifyingCode" use="required" type="def_int_gt0"/>
                                           <xs:attribute name="MaxAge"            use="required" type="def_int_gt0"/>
+                                          <xs:attribute name="MinCount"          use="required" type="def_int_ge0"/>
                                             <xs:attribute name="FirstQualifyingPosition" use="required">
                                               <xs:simpleType>
                                                 <xs:restriction base="xs:string">
