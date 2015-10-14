@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.4 - added a choice of 'Modify' for ResStatus
+
      v. 2015-07 2.3 - added MinCount attribute to Offer>>Guest
 
      v. 2015-07 2.2 - changes to Supplement: a few attributes are removed and many attributes are made optional
@@ -799,6 +801,7 @@
                       <rng:value>Requested</rng:value>
                       <rng:value>Reserved</rng:value>
                       <rng:value>Cancelled</rng:value>
+                      <rng:value>Modify</rng:value>
                     </rng:choice>
                   </rng:attribute>
 

@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.5 - added a choice of 'Modify' for ResStatus
+
      v. 2015-07 2.4 - added MinCount attribute to Offer>>Guest
 
      v. 2015-07 2.3 - changes to Supplement: a few attributes are removed and many attributes are made optional
@@ -825,6 +827,7 @@
                           <xs:enumeration value="Requested"/>
                           <xs:enumeration value="Reserved"/>
                           <xs:enumeration value="Cancelled"/>
+                          <xs:enumeration value="Modify"/>
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:attribute>
