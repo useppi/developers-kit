@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.6 - made sub-elements of HotelReservation > ... > Customer > Address {0,1} optional
+
      v. 2015-07 2.5 - added a choice of 'Modify' for ResStatus
 
      v. 2015-07 2.4 - added MinCount attribute to Offer>>Guest
@@ -570,10 +572,10 @@
                                                           <xs:element name="Address" minOccurs="0">
                                                             <xs:complexType>
                                                               <xs:sequence>
-                                                                <xs:element name="AddressLine"  type="def_nonempty_string"/>
-                                                                <xs:element name="CityName"     type="def_nonempty_string"/>
-                                                                <xs:element name="PostalCode"   type="def_nonempty_string"/>
-                                                                <xs:element name="CountryName">
+                                                                <xs:element name="AddressLine"  type="def_nonempty_string" minOccurs="0"/>
+                                                                <xs:element name="CityName"     type="def_nonempty_string" minOccurs="0"/>
+                                                                <xs:element name="PostalCode"   type="def_nonempty_string" minOccurs="0"/>
+                                                                <xs:element name="CountryName"  minOccurs="0">
                                                                   <xs:complexType>
                                                                     <xs:attribute name="Code" use="required">
                                                                       <xs:simpleType>
