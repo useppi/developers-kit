@@ -8,13 +8,12 @@
 
      changelog:
 
-<<<<<<< HEAD
-     v. 2015-07 2.5 - changes to Inventory: removed the old Inventory, added MaxChildOccupancy to GuestRoom, made some of the attributes mandatory, formating changes
-=======
+     v. 2015-07 2.7 - changes to Inventory: removed the old Inventory, added MaxChildOccupancy to GuestRoom,
+                      made some of the attributes mandatory, formating changes
+
      v. 2015-07 2.6 - made sub-elements of HotelReservation > ... > Customer > Address {0,1} optional
 
      v. 2015-07 2.5 - added a choice of 'Modify' for ResStatus
->>>>>>> origin/master
 
      v. 2015-07 2.4 - added MinCount attribute to Offer>>Guest
 

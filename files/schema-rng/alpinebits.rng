@@ -8,13 +8,11 @@
 
      changelog:
 
-<<<<<<< HEAD
-     v. 2015-07 2.4 - added section for New Inventory (exact name pending)
-=======
+     v. 2015-07 2.6 - added section for New Inventory (exact name pending)
+
      v. 2015-07 2.5 - made sub-elements of HotelReservation > ... > Customer > Address {0,1} optional
 
      v. 2015-07 2.4 - added a choice of 'Modify' for ResStatus
->>>>>>> origin/master
 
      v. 2015-07 2.3 - added MinCount attribute to Offer>>Guest
 
