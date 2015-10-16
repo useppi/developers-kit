@@ -8,7 +8,13 @@
 
      changelog:
 
+<<<<<<< HEAD
      v. 2015-07 2.4 - added section for New Inventory (exact name pending)
+=======
+     v. 2015-07 2.5 - made sub-elements of HotelReservation > ... > Customer > Address {0,1} optional
+
+     v. 2015-07 2.4 - added a choice of 'Modify' for ResStatus
+>>>>>>> origin/master
 
      v. 2015-07 2.3 - added MinCount attribute to Offer>>Guest
 
@@ -553,25 +559,33 @@
                                 <rng:optional>
                                   <rng:element name="Address">
 
-                                    <rng:element name="AddressLine">
-                                      <rng:ref name="def_nonempty_string"/>
-                                    </rng:element>
+                                    <rng:optional>
+                                      <rng:element name="AddressLine">
+                                        <rng:ref name="def_nonempty_string"/>
+                                      </rng:element>
+                                    </rng:optional>
 
-                                    <rng:element name="CityName">
-                                      <rng:ref name="def_nonempty_string"/>
-                                    </rng:element>
+                                    <rng:optional>
+                                      <rng:element name="CityName">
+                                        <rng:ref name="def_nonempty_string"/>
+                                      </rng:element>
+                                    </rng:optional>
 
-                                    <rng:element name="PostalCode">
-                                      <rng:ref name="def_nonempty_string"/>
-                                    </rng:element>
+                                    <rng:optional>
+                                      <rng:element name="PostalCode">
+                                        <rng:ref name="def_nonempty_string"/>
+                                      </rng:element>
+                                    </rng:optional>
 
-                                    <rng:element name="CountryName">
-                                      <rng:attribute name="Code">
-                                        <rng:data type="string">
-                                          <rng:param name="pattern">[A-Z][A-Z]</rng:param>
-                                        </rng:data>
-                                      </rng:attribute>
-                                    </rng:element>
+                                    <rng:optional>
+                                      <rng:element name="CountryName">
+                                        <rng:attribute name="Code">
+                                          <rng:data type="string">
+                                            <rng:param name="pattern">[A-Z][A-Z]</rng:param>
+                                          </rng:data>
+                                        </rng:attribute>
+                                      </rng:element>
+                                    </rng:optional>
 
                                     <rng:optional>
                                       <rng:attribute name="Remark">
@@ -801,6 +815,7 @@
                       <rng:value>Requested</rng:value>
                       <rng:value>Reserved</rng:value>
                       <rng:value>Cancelled</rng:value>
+                      <rng:value>Modify</rng:value>
                     </rng:choice>
                   </rng:attribute>
 
