@@ -8,7 +8,9 @@
 
      changelog:
 
-     v. 2015-07 2.5 - changes to Inventory: removed the old Inventory, added MaxChildOccupancy to GuestRoom, made some of the attributes mandatory, formating changes
+     v. 2015-07 2.8 - Inventory: removed DimensionCategory, added TextFormat in the ImageItem Description
+
+     v. 2015-07 2.7 - changes to Inventory: removed the old Inventory, added MaxChildOccupancy to GuestRoom, made some of the attributes mandatory, formating changes
 
      v. 2015-07 2.6 - made sub-elements of HotelReservation > ... > Customer > Address {0,1} optional
 
@@ -1112,7 +1114,6 @@
                                                                   <xs:sequence>
                                                                     <xs:element type="xs:string" name="URL"/>
                                                                   </xs:sequence>
-                                                                  <xs:attribute type="xs:string" name="DimensionCategory"/>
                                                                   <xs:attribute type="xs:string" name="CopyrightNotice"/>
                                                                 </xs:complexType>
                                                               </xs:element>
@@ -1123,6 +1124,7 @@
                                                                 <xs:complexType>
                                                                   <xs:simpleContent>
                                                                     <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:string" name="TextFormat"/>
                                                                       <xs:attribute type="xs:string" name="Language"/>
                                                                     </xs:extension>
                                                                   </xs:simpleContent>

@@ -8,7 +8,9 @@
 
      changelog:
 
-     v. 2015-07 2.4 - added section for New Inventory (exact name pending)
+     v. 2015-07 2.7 - Inventory: removed DimensionCategory, added TextFormat in the ImageItem Description
+
+     v. 2015-07 2.6 - added section for New Inventory (exact name pending)
 
      v. 2015-07 2.5 - made sub-elements of HotelReservation > ... > Customer > Address {0,1} optional
 
@@ -1415,11 +1417,6 @@
 																							</rng:oneOrMore>
 																							
 																							<rng:optional>
-																								<rng:attribute name="DimensionCategory">
-																									<rng:ref name="def_nonempty_string"/>
-																								</rng:attribute>
-																							</rng:optional>
-																							<rng:optional>
 																								<rng:attribute name="CopyrightNotice">
 																									<rng:ref name="def_nonempty_string"/>
 																								</rng:attribute>
@@ -1433,6 +1430,9 @@
 																					<rng:zeroOrMore>
 																						<rng:element name="Description">
 								                              <rng:ref name="def_nonempty_string"/>
+																							<rng:attribute name="TextFormat">
+																								<rng:ref name="def_nonempty_string"/>
+																							</rng:attribute>
 																							<rng:attribute name="Language">
 																								<rng:ref name="def_nonempty_string"/>
 																							</rng:attribute>
