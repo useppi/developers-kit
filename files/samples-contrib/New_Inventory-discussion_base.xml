@@ -10,7 +10,7 @@
 		  Quantity: Used to define the quantity for an associated element or attribute.
 		  Sort: display order (I think it's better to put this in the descriptive part)
           -->
-	  <GuestRoom Code="DZ" MaxAdultOccupancy="2" MaxChildOccupancy="1" MaxOccupancy="2" MinOccupancy="1">
+	  <GuestRoom Code="DZ" MaxChildOccupancy="1" MaxOccupancy="2" MinOccupancy="1">
 	    <!--
                 Other options:
 		  MaxCribs: Maximum number of cribs allowed in a room type.
@@ -21,7 +21,7 @@
 		  NonSmoking: Non-smoking indicator.
 
 	    -->
-	    <TypeRoom StandardOccupancy="2" StandardNumBeds="2" />
+	    <TypeRoom StandardOccupancy="2" />
 	    <Amenities>
 	      <!-- NB: RoomAmenityCode vs. AmenityCode we were using before -->
 	      <Amenity RoomAmenityCode="26"/>
@@ -46,7 +46,7 @@
                      ... it's a long list. See table "ADT"
 
                 -->
-	      <MultimediaDescription ID="NAME" InfoCode="25">
+	      <MultimediaDescription InfoCode="25">
 	        <TextItems>
 		  <TextItem>
 		    <Description TextFormat="PlainText" Language="de">
@@ -58,7 +58,7 @@
 		  </TextItem>
 		</TextItems>
 	      </MultimediaDescription>
-	      <MultimediaDescription ID="DESCRIPTION" InfoCode="1">
+	      <MultimediaDescription InfoCode="1">
 	        <TextItems>
 		  <TextItem>
 		    <Description TextFormat="PlainText" Language="de">
@@ -70,10 +70,10 @@
 		  </TextItem>
 		</TextItems>
 	      </MultimediaDescription>
-              <MultimediaDescription ID="PICTURES">
+              <MultimediaDescription>
                 <ImageItems>
                   <ImageItem Category="6">
-                    <ImageFormat DimensionCategory="original" Format="6" CopyrightNotice="NB: notice untranslatable">
+                    <ImageFormat DimensionCategory="original" CopyrightNotice="NB: notice untranslatable">
                       <URL>
                         http://www.placekitten.com/1100/700
                       </URL>
