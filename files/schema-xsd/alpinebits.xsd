@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.9 - Inventory: redefined allowed values of TextFormat and InfoCode
+
      v. 2015-07 2.8 - Inventory: removed DimensionCategory, added TextFormat in the ImageItem Description
 
      v. 2015-07 2.7 - changes to Inventory: removed the old Inventory, added MaxChildOccupancy to GuestRoom, made some of the attributes mandatory, formating changes
@@ -1080,7 +1082,13 @@
                                                                 <xs:complexType>
                                                                   <xs:simpleContent>
                                                                     <xs:extension base="xs:string">
-                                                                      <xs:attribute type="xs:string" name="TextFormat"/>
+                                                                      <xs:attribute type="xs:string" name="TextFormat">
+																																				<xs:simpleType>
+																																					<xs:restriction base="xs:string">
+																																						<xs:enumeration value="PlainText"/>
+																																					</xs:restriction>
+																																				</xs:simpleType>
+																																			</xs:attribute>
                                                                       <xs:attribute type="xs:string" name="Language"/>
                                                                     </xs:extension>
                                                                   </xs:simpleContent>
@@ -1124,7 +1132,13 @@
                                                                 <xs:complexType>
                                                                   <xs:simpleContent>
                                                                     <xs:extension base="xs:string">
-                                                                      <xs:attribute type="xs:string" name="TextFormat"/>
+                                                                      <xs:attribute type="xs:string" name="TextFormat">
+																																				<xs:simpleType>
+																																					<xs:restriction base="xs:string">
+																																						<xs:enumeration value="PlainText"/>
+																																					</xs:restriction>
+																																				</xs:simpleType>
+																																			</xs:attribute>
                                                                       <xs:attribute type="xs:string" name="Language"/>
                                                                     </xs:extension>
                                                                   </xs:simpleContent>
@@ -1143,7 +1157,15 @@
                                                   </xs:element>
 
                                                 </xs:sequence>
-                                                <xs:attribute type="xs:byte" name="InfoCode" use="optional"/>
+                                                <xs:attribute type="xs:byte" name="InfoCode" use="optional">
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:enumeration value="25"/>
+																											<xs:enumeration value="23"/>
+																											<xs:enumeration value="1"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:attribute>
                                               </xs:complexType>
                                             </xs:element>
 

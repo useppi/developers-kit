@@ -73,15 +73,15 @@
               <MultimediaDescription>
                 <ImageItems>
                   <ImageItem Category="6">
-                    <ImageFormat DimensionCategory="original" CopyrightNotice="NB: notice untranslatable">
+                    <ImageFormat CopyrightNotice="NB: notice untranslatable">
                       <URL>
                         http://www.placekitten.com/1100/700
                       </URL>
                     </ImageFormat>
-                    <Description Language="de">
+                    <Description TextFormat="PlainText" Language="de">
                       Zimmerbild
                     </Description>
-                    <Description Language="it">
+                    <Description TextFormat="PlainText" Language="it">
                       immagine della stanza
                     </Description>
                   </ImageItem>
