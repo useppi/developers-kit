@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+     AlpineBits 2014-04
+     http://www.alpinebits.org/
+
+     sample message file
+
+     changelog:
+
+     v. 2015-07 1.0 updated to 2015-07
+
+     v. 2014-04 1.0
+-->
+
+<OTA_HotelInvNotifRQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                     xmlns="http://www.opentravel.org/OTA/2003/05" 
+                     xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelInvNotifRQ.xsd" 
+                     Version="1.000">
+
+    <SellableProducts HotelCode="123" HotelName="Frangart Inn">
+
+        <!-- room category: double -->
+
+        <SellableProduct InvTypeCode="double">
+
+            <GuestRoom>
+
+                <!-- Mandatory Element.  -->
+                <Quantities MaximumAdditionalGuests="2" />
+
+                <!-- Room Occupancy. Mandatory Element. Defines the
+                     standard occupancy (MaxOccupancy - MaximumAdditionalGuests from above). -->
+                <Occupancy  MinOccupancy="2" MaxOccupancy="4" />
+
+                <!-- Specially crafted occupancy for children. Optional element.
+                     MaxOccupancy must be > MaximumAdditionalGuests and means that
+                     children can occupy “standard” beds (up to MaxOccupancy -
+                     MaximumAdditionalGuests) and pay the children price instead of
+                     the BaseByGuestAmts price (see rate calculation in the next chapter). -->
+                <Occupancy  AgeQualifyingCode="8" MaxOccupancy="3" />
+
+                <Room RoomClassificationCode="42" />
+
+                <Description>
+
+                    <Text TextFormat="PlainText" Language="en">lorem ipsum</Text>
+                    <Text TextFormat="PlainText" Language="it">lorem ipsum</Text>
+
+                    <!-- more languages ... -->
+
+                </Description>
+
+            </GuestRoom>
+
+        </SellableProduct>
+
+        <!-- specific rooms in "double" -->
+
+        <SellableProduct InvTypeCode="double" InvCode="101">
+            <GuestRoom>
+                <Description>
+                    <Text TextFormat="PlainText" Language="en">lorem ipsum</Text>
+                </Description>
+            </GuestRoom>
+        </SellableProduct>
+
+        <SellableProduct InvTypeCode="double" InvCode="102">
+            <GuestRoom></GuestRoom>
+        </SellableProduct>
+
+        <SellableProduct InvTypeCode="double" InvCode="103a">
+            <GuestRoom></GuestRoom>
+        </SellableProduct>
+
+        <SellableProduct InvTypeCode="double" InvCode="103b">
+            <GuestRoom></GuestRoom>
+        </SellableProduct>
+
+        <!-- other root categories and specific rooms may follow ... -->
+
+    </SellableProducts>
+
+</OTA_HotelInvNotifRQ>

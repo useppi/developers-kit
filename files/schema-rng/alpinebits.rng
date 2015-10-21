@@ -8,10 +8,6 @@
 
      changelog:
 
-     v. 2015-07 2.8 - Inventory: revision of mandatory and optional elements
-
-     v. 2015-07 2.7 - Inventory: removed DimensionCategory, added TextFormat in the ImageItem Description
-
      v. 2015-07 2.6 - added section for New Inventory (exact name pending)
 
      v. 2015-07 2.5 - made sub-elements of HotelReservation > ... > Customer > Address {0,1} optional
@@ -1300,207 +1296,209 @@
 
           <!-- HotelDescriptiveContent {1} -->
 
-					<rng:element name="HotelDescriptiveContent">
+            <rng:element name="HotelDescriptiveContent">
 
-						<!-- HotelDescriptiveContent > FacilityInfo {1} -->
+              <!-- HotelDescriptiveContent > FacilityInfo {1} -->
 
-						<rng:element name="FacilityInfo">
+								<rng:element name="FacilityInfo">
 
-							<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms {1} -->
+									<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms {1} -->
 
-							<rng:element name="GuestRooms">
-								
-								<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom {0,...} -->
-								
-								<rng:oneOrMore>
-									<rng:element name="GuestRoom">
-									
-										<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > TypeRoom {1} -->
-										
-										<rng:optional>
-											<rng:element name="TypeRoom">
-												<rng:optional>
-													<rng:attribute name="StandardOccupancy">
-														<rng:ref name="def_int_gt0"/>
-													</rng:attribute>
-												</rng:optional>
-												<rng:optional>
-													<rng:attribute name="RoomClassificationCode">
-														<rng:ref name="def_int_gt0"/>
-													</rng:attribute>
-												</rng:optional>
-												<rng:optional>
-													<rng:attribute name="RoomID">
-														<rng:ref name="def_int_gt0"/>
-													</rng:attribute>
-												</rng:optional>
-											</rng:element>
-										</rng:optional>
-										
-										<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > Amenities {1} -->
-										
-										<rng:optional>
-											<rng:element name="Amenities">
+										<rng:element name="GuestRooms">
+											
+											<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom {0,...} -->
+											
+											<rng:oneOrMore>
+												<rng:element name="GuestRoom">
 												
-												<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > Amenities > Amenity {0,...} -->
+													<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > TypeRoom {1} -->
+													
+													<rng:oneOrMore>
+														<rng:element name="TypeRoom">
+															<rng:optional>
+																<rng:attribute name="StandardOccupancy">
+																	<rng:ref name="def_int_gt0"/>
+																</rng:attribute>
+															</rng:optional>
+															<rng:optional>
+																<rng:attribute name="RoomClassificationCode">
+																	<rng:ref name="def_int_gt0"/>
+																</rng:attribute>
+															</rng:optional>
+															<rng:optional>
+																<rng:attribute name="RoomID">
+																	<rng:ref name="def_int_gt0"/>
+																</rng:attribute>
+															</rng:optional>
+														</rng:element>
+													</rng:oneOrMore>
+													
+													<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > Amenities {1} -->
+													
+													<rng:zeroOrMore>
+														<rng:element name="Amenities">
+															
+															<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > Amenities > Amenity {0,...} -->
 
-												<rng:oneOrMore>
-													<rng:element name="Amenity">
-														<rng:attribute name="RoomAmenityCode">
+															<rng:element name="Amenity">
+																<rng:optional>
+																	<rng:attribute name="RoomAmenityCode">
+																		<rng:ref name="def_int_gt0"/>
+																	</rng:attribute>
+																</rng:optional>
+															</rng:element>
+															
+														</rng:element>
+													</rng:zeroOrMore>
+
+													<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions {1} -->
+													
+													<rng:zeroOrMore>
+														<rng:element name="MultimediaDescriptions">
+
+															<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription {1} -->
+															
+															<rng:zeroOrMore>
+																<rng:element name="MultimediaDescription">
+
+																	<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems {1} -->
+																	
+																	<rng:zeroOrMore>
+																		<rng:element name="TextItems">
+
+																			<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems > TextItem {0,...} -->
+																			
+																			<rng:zeroOrMore>
+																				<rng:element name="TextItem">
+
+																					<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems > TextItem > Description {1} -->
+																					
+																					<rng:zeroOrMore>
+																						<rng:element name="Description">
+								                              <rng:ref name="def_nonempty_string"/>
+																							<rng:attribute name="TextFormat">
+																								<rng:ref name="def_nonempty_string"/>
+																							</rng:attribute>
+																							<rng:attribute name="Language">
+																								<rng:ref name="def_nonempty_string"/>
+																							</rng:attribute>
+																						</rng:element>
+																					</rng:zeroOrMore>
+																	
+																				</rng:element>
+																			</rng:zeroOrMore>
+
+																		</rng:element>
+																	</rng:zeroOrMore>
+															
+																	<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems {1} -->
+																	
+																	<rng:zeroOrMore>
+																		<rng:element name="ImageItems">
+
+																			<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem {0,...} -->
+																			
+																			<rng:zeroOrMore>
+																				<rng:element name="ImageItem">
+
+																					<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > ImageFormat {1} -->
+																					
+																					<rng:oneOrMore>
+																						<rng:element name="ImageFormat">
+																	
+																							<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > ImageFormat > URL {1} -->
+																							
+																							<rng:oneOrMore>
+																								<rng:element name="URL">
+																									<rng:ref name="def_nonempty_string"/>
+																								</rng:element>
+																							</rng:oneOrMore>
+																							
+																							<rng:optional>
+																								<rng:attribute name="DimensionCategory">
+																									<rng:ref name="def_nonempty_string"/>
+																								</rng:attribute>
+																							</rng:optional>
+																							<rng:optional>
+																								<rng:attribute name="CopyrightNotice">
+																									<rng:ref name="def_nonempty_string"/>
+																								</rng:attribute>
+																							</rng:optional>
+																							
+																						</rng:element>
+																					</rng:oneOrMore>
+
+																					<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > Description {1} -->
+																					
+																					<rng:zeroOrMore>
+																						<rng:element name="Description">
+								                              <rng:ref name="def_nonempty_string"/>
+																							<rng:attribute name="Language">
+																								<rng:ref name="def_nonempty_string"/>
+																							</rng:attribute>
+																						</rng:element>
+																					</rng:zeroOrMore>
+																					
+																					<rng:attribute name="Category">
+																						<rng:ref name="def_nonempty_string"/>
+																					</rng:attribute>
+																							
+																				</rng:element>
+																			</rng:zeroOrMore>
+
+																		</rng:element>
+																	</rng:zeroOrMore>
+																	
+																	<rng:optional>
+																		<rng:attribute name="InfoCode">
+																			<rng:ref name="def_int_gt0"/>
+																		</rng:attribute>
+																	</rng:optional>
+
+																</rng:element>
+															</rng:zeroOrMore>
+
+													</rng:element>
+													</rng:zeroOrMore>
+													
+													<rng:attribute name="Code">
+														<rng:ref name="def_nonempty_string"/>
+													</rng:attribute>
+													<rng:optional>
+														<rng:attribute name="MaxOccupancy">
 															<rng:ref name="def_int_gt0"/>
 														</rng:attribute>
-													</rng:element>
-												</rng:oneOrMore>
-												
-											</rng:element>
-										</rng:optional>
-
-										<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions {1} -->
-										
-										<rng:optional>
-											<rng:element name="MultimediaDescriptions">
-
-												<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription {1} -->
-												
-												<rng:oneOrMore>
-													<rng:element name="MultimediaDescription">
-
-														<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems {1} -->
-														
-														<rng:optional>
-															<rng:element name="TextItems">
-
-																<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems > TextItem {0,...} -->
-																
-																<rng:zeroOrMore>
-																	<rng:element name="TextItem">
-
-																		<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > TextItems > TextItem > Description {1} -->
-																		
-																		<rng:zeroOrMore>
-																			<rng:element name="Description">
-																				<rng:ref name="def_nonempty_string"/>
-																				<rng:attribute name="TextFormat">
-																					<rng:value>PlainText</rng:value>
-																				</rng:attribute>
-																				<rng:attribute name="Language">
-																					<rng:ref name="def_nonempty_string"/>
-																				</rng:attribute>
-																			</rng:element>
-																		</rng:zeroOrMore>
-														
-																	</rng:element>
-																</rng:zeroOrMore>
-
-															</rng:element>
-														</rng:optional>
-												
-														<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems {1} -->
-														
-														<rng:optional>
-															<rng:element name="ImageItems">
-
-																<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem {0,...} -->
-																
-																<rng:zeroOrMore>
-																	<rng:element name="ImageItem">
-
-																		<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > ImageFormat {1} -->
-																		
-																		<rng:element name="ImageFormat">
+													</rng:optional>
+													<rng:optional>
+														<rng:attribute name="MinOccupancy">
+															<rng:ref name="def_int_gt0"/>
+														</rng:attribute>
+													</rng:optional>
+													<rng:optional>
+														<rng:attribute name="MaxChildOccupancy">
+															<rng:ref name="def_int_gt0"/>
+														</rng:attribute>
+													</rng:optional>
 													
-																			<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > ImageFormat > URL {1} -->
-																			
-																			<rng:element name="URL">
-																				<rng:ref name="def_nonempty_string"/>
-																			</rng:element>
-																			
-																			<rng:optional>
-																				<rng:attribute name="CopyrightNotice">
-																					<rng:ref name="def_nonempty_string"/>
-																				</rng:attribute>
-																			</rng:optional>
-																			
-																		</rng:element>
+												</rng:element>
+											</rng:oneOrMore>
+											
+										</rng:element>
 
-																		<!-- HotelDescriptiveContent > FacilityInfo > GuestRooms > GuestRoom > MultimediaDescriptions > MultimediaDescription > ImageItems > ImageItem > Description {1} -->
-																		
-																		<rng:zeroOrMore>
-																			<rng:element name="Description">
-																				<rng:ref name="def_nonempty_string"/>
-																				<rng:attribute name="TextFormat">
-																					<rng:value>PlainText</rng:value>
-																				</rng:attribute>
-																				<rng:attribute name="Language">
-																					<rng:ref name="def_nonempty_string"/>
-																				</rng:attribute>
-																			</rng:element>
-																		</rng:zeroOrMore>
-																		
-																		<rng:attribute name="Category">
-																			<rng:ref name="def_nonempty_string"/>
-																		</rng:attribute>
-																				
-																	</rng:element>
-																</rng:zeroOrMore>
+									<!-- SellableProducts > SellableProduct > GuestRoom > Occupancy {0,} (actually {0..2} but Relax-NG cannot do this) -->
 
-															</rng:element>
-														</rng:optional>
-														
-														<rng:optional>
-															<rng:attribute name="InfoCode">
-                                <rng:choice>
-                                  <rng:value>25</rng:value>
-                                  <rng:value>23</rng:value>
-                                  <rng:value>1</rng:value>
-                                </rng:choice>
-															</rng:attribute>
-														</rng:optional>
-
-													</rng:element>
-												</rng:oneOrMore>
-
-											</rng:element>
-										</rng:optional>
-										
-										<rng:attribute name="Code">
-											<rng:ref name="def_nonempty_string"/>
-										</rng:attribute>
-										<rng:optional>
-											<rng:attribute name="MaxOccupancy">
-												<rng:ref name="def_int_gt0"/>
-											</rng:attribute>
-										</rng:optional>
-										<rng:optional>
-											<rng:attribute name="MinOccupancy">
-												<rng:ref name="def_int_gt0"/>
-											</rng:attribute>
-										</rng:optional>
-										<rng:optional>
-											<rng:attribute name="MaxChildOccupancy">
-												<rng:ref name="def_int_gt0"/>
-											</rng:attribute>
-										</rng:optional>
-										
-									</rng:element>
-								</rng:oneOrMore>
-								
-							</rng:element>
-
-							<!-- SellableProducts > SellableProduct > GuestRoom > Occupancy {0,} (actually {0..2} but Relax-NG cannot do this) -->
-
-						</rng:element>
-						
-						<rng:optional>
-							<rng:attribute name="HotelCode">
+								</rng:element>
+							
+							<rng:optional>
+								<rng:attribute name="HotelCode">
+									<rng:ref name="def_nonempty_string"/>
+								</rng:attribute>
+							</rng:optional>
+							<rng:attribute name="HotelName">
 								<rng:ref name="def_nonempty_string"/>
 							</rng:attribute>
-						</rng:optional>
-						<rng:attribute name="HotelName">
-							<rng:ref name="def_nonempty_string"/>
-						</rng:attribute>
 
-					</rng:element>
+						</rng:element>
 						
 				</rng:element>
 				
