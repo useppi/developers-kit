@@ -101,6 +101,32 @@ v. 2015-07 1.0
 
               </MultimediaDescription>
 
+              <MultimediaDescription>
+
+                <ImageItems>
+
+                  <!-- 6 means Guest room, see OTA table PIC -->
+
+                  <ImageItem Category="17">
+
+                    <ImageFormat CopyrightNotice="Copyright notice 2015">
+
+                      <URL>http://www.example.com/map.jpg</URL>
+
+                    </ImageFormat>
+
+                    <Description TextFormat="PlainText" Language="en">Map of the room</Description>
+
+                    <Description TextFormat="PlainText" Language="de">Zimmerplan</Description>
+
+                    <Description TextFormat="PlainText" Language="it">Mappa della stanza</Description>
+
+                  </ImageItem>
+
+                </ImageItems>
+
+              </MultimediaDescription>
+
             </MultimediaDescriptions>
 
           </GuestRoom>
