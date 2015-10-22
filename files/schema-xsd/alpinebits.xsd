@@ -974,11 +974,11 @@
 
 
   <!-- ******************************************************************************* -->
-  <!-- * New Inventory (exact name pending)                                            -->
+  <!-- * Inventory                                                                     -->
   <!-- ******************************************************************************* -->
 
 
-  <!-- New Inventory: OTA_HotelDescriptiveContentNotifRQ -->
+  <!-- Inventory: OTA_HotelDescriptiveContentNotifRQ -->
   <xs:element name="OTA_HotelDescriptiveContentNotifRQ">
     <xs:complexType>
       <xs:sequence>
@@ -1019,9 +1019,9 @@
                                         <xs:complexType>
                                           <xs:simpleContent>
                                             <xs:extension base="xs:string">
-                                              <xs:attribute name="StandardOccupancy" use="optional" type="def_int_gt0"/>
-                                              <xs:attribute name="RoomClassificationCode" use="optional" type="def_int_gt0"/>
-                                              <xs:attribute type="def_int_gt0" name="RoomID" use="optional"/>
+                                              <xs:attribute name="StandardOccupancy"      use="optional" type="def_int_gt0" />
+                                              <xs:attribute name="RoomClassificationCode" use="optional" type="def_int_gt0" />
+                                              <xs:attribute name="RoomID"                 use="optional" type="def_int_gt0" />
                                             </xs:extension>
                                           </xs:simpleContent>
                                         </xs:complexType>
@@ -1079,8 +1079,8 @@
                                                                 <xs:complexType>
                                                                   <xs:simpleContent>
                                                                     <xs:extension base="xs:string">
-                                                                      <xs:attribute type="xs:string" name="TextFormat"/>
-                                                                      <xs:attribute type="xs:string" name="Language"/>
+                                                                      <xs:attribute name="TextFormat" type="xs:string" />
+                                                                      <xs:attribute name="Language"   type="xs:string" />
                                                                     </xs:extension>
                                                                   </xs:simpleContent>
                                                                 </xs:complexType>
@@ -1111,10 +1111,10 @@
                                                               <xs:element name="ImageFormat">
                                                                 <xs:complexType>
                                                                   <xs:sequence>
-                                                                    <xs:element type="xs:string" name="URL"/>
+                                                                    <xs:element name="URL" type="xs:string" />
                                                                   </xs:sequence>
-                                                                  <xs:attribute type="xs:string" name="DimensionCategory"/>
-                                                                  <xs:attribute type="xs:string" name="CopyrightNotice"/>
+                                                                  <xs:attribute name="DimensionCategory" type="xs:string" />
+                                                                  <xs:attribute name="CopyrightNotice"   type="xs:string" />
                                                                 </xs:complexType>
                                                               </xs:element>
 
@@ -1124,25 +1124,25 @@
                                                                 <xs:complexType>
                                                                   <xs:simpleContent>
                                                                     <xs:extension base="xs:string">
-                                                                      <xs:attribute type="xs:string" name="Language"/>
+                                                                      <xs:attribute name="Language" type="xs:string" />
                                                                     </xs:extension>
                                                                   </xs:simpleContent>
                                                                 </xs:complexType>
                                                               </xs:element>
 
                                                             </xs:sequence>
-                                                            <xs:attribute type="xs:byte" name="Category"/>
+                                                            <xs:attribute name="Category" type="xs:byte" />
                                                           </xs:complexType>
                                                         </xs:element>
 
                                                       </xs:sequence>
-                                                      <xs:attribute type="xs:string" name="ID"/>
-                                                      <xs:attribute type="xs:byte" name="AdditionalDetailCode"/>
+                                                      <xs:attribute name="ID"                   type="xs:string" />
+                                                      <xs:attribute name="AdditionalDetailCode" type="xs:byte" />
                                                     </xs:complexType>
                                                   </xs:element>
 
                                                 </xs:sequence>
-                                                <xs:attribute type="xs:byte" name="InfoCode" use="optional"/>
+                                                <xs:attribute name="InfoCode" use="optional" type="xs:byte" />
                                               </xs:complexType>
                                             </xs:element>
 
@@ -1151,7 +1151,7 @@
                                       </xs:element>
 
                                     </xs:sequence>
-                                    <xs:attribute name="Code"              type="def_nonempty_string"/>
+                                    <xs:attribute name="Code"                             type="def_nonempty_string" />
                                     <xs:attribute name="MaxOccupancy"      use="optional" type="def_int_gt0" />
                                     <xs:attribute name="MinOccupancy"      use="optional" type="def_int_gt0" />
                                     <xs:attribute name="MaxChildOccupancy" use="optional" type="def_int_gt0" />
@@ -1167,8 +1167,8 @@
                     </xs:element>
 
                   </xs:sequence>
-                  <xs:attribute type="def_nonempty_string" name="HotelCode"/>
-                  <xs:attribute type="def_nonempty_string" name="HotelName"/>
+                  <xs:attribute name="HotelCode" type="def_nonempty_string" />
+                  <xs:attribute name="HotelName" type="def_nonempty_string" />
                 </xs:complexType>
               </xs:element>
 
@@ -1183,11 +1183,11 @@
     </xs:complexType>
   </xs:element>
 
-  <!-- New Inventory: OTA_HotelDescriptiveContentNotifRS -->
+  <!-- Inventory: OTA_HotelDescriptiveContentNotifRS -->
   
   <xs:element name="OTA_HotelDescriptiveContentNotifRS">
     <xs:complexType>
-      <xs:group   ref="def_generic_response"/>
+      <xs:group ref="def_generic_response"/>
       <xs:attribute name="Version" use="required"/>
       <xs:attribute name="TimeStamp"/>
     </xs:complexType>
