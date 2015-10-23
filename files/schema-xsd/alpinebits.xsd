@@ -8,6 +8,8 @@
 
      changelog:
 
+     v. 2015-07 2.9 - Inventory: added a missing maxOccurs="unbounded" to the ImageItem
+
      v. 2015-07 2.8 - Inventory: reconciled with the definitions given in the updated document
 
      v. 2015-07 2.7 - changes to Inventory: removed the old Inventory, added MaxChildOccupancy to GuestRoom,
@@ -1078,7 +1080,7 @@
                                                     <xs:complexType>
                                                       <xs:sequence>
 
-                                                        <xs:element name="ImageItem">
+                                                        <xs:element name="ImageItem" maxOccurs="unbounded">
                                                           <xs:complexType>
                                                             <xs:sequence>
 
