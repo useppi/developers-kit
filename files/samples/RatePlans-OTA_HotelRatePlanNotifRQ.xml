@@ -8,6 +8,7 @@
 
      changelog:
      v. 2015-07 2016-02-10 LengthOfStay -> Time set to 5 for SetMaxLOS
+                           BaseByGuestAmt -> Type corrected to "25"
      v. 2014-04        1.2 removed third example Offer element (only at most two Offer elements are allowed)
      v. 2014-04        1.1 Description: fixed Name="Short Description" -> Name="title" and added example content
      v. 2014-04        1.0
@@ -47,8 +48,8 @@
                 <Rate InvTypeCode="double" Start="2014-03-03" End="2014-03-08">
 
                     <BaseByGuestAmts>
-                        <BaseByGuestAmt Type="7" NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="106"/>
-                        <BaseByGuestAmt Type="7" NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="192"/>
+                        <BaseByGuestAmt Type="25" NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="106"/>
+                        <BaseByGuestAmt Type="25" NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="192"/>
                     </BaseByGuestAmts>
                     <AdditionalGuestAmounts>
                         <AdditionalGuestAmount AgeQualifyingCode="10" Amount="76.8"/>
