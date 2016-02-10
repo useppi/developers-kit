@@ -7,9 +7,10 @@
      sample message file
 
      changelog:
-     v. 2014-04 1.2 removed third example Offer element (only at most two Offer elements are allowed)
-     v. 2014-04 1.1 Description: fixed Name="Short Description" -> Name="title" and added example content
-     v. 2014-04 1.0
+     v. 2015-07 2016-02-10 LengthOfStay -> Time set to 5 for SetMaxLOS
+     v. 2014-04        1.2 removed third example Offer element (only at most two Offer elements are allowed)
+     v. 2014-04        1.1 Description: fixed Name="Short Description" -> Name="title" and added example content
+     v. 2014-04        1.0
 -->
 
 <OTA_HotelRatePlanNotifRQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -27,7 +28,7 @@
 
                     <LengthsOfStay>
                         <LengthOfStay Time="5" TimeUnit="Day" MinMaxMessageType="SetMinLOS"/>
-                        <LengthOfStay Time="0" TimeUnit="Day" MinMaxMessageType="SetMaxLOS"/>
+                        <LengthOfStay Time="5" TimeUnit="Day" MinMaxMessageType="SetMaxLOS"/>
                     </LengthsOfStay>
 
                     <DOW_Restrictions>
