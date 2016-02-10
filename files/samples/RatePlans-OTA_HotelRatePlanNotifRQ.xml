@@ -8,7 +8,7 @@
 
      changelog:
      v. 2015-07 2016-02-10 LengthOfStay -> Time set to 5 for SetMaxLOS
-                           BaseByGuestAmt -> Type corrected to "25"
+                           BaseByGuestAmt -> AmountAfterTax corrected to be consistent with the choice of Type="7" (per person)
      v. 2014-04        1.2 removed third example Offer element (only at most two Offer elements are allowed)
      v. 2014-04        1.1 Description: fixed Name="Short Description" -> Name="title" and added example content
      v. 2014-04        1.0
