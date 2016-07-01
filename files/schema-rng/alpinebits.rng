@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
 
 <!-- 
-     AlpineBits 2015-07
+     AlpineBits 2015-07b
      http://www.alpinebits.org/
 
      Relax-NG grammar file
 
      changelog:
+
+    v. 2015-07b 1.0 - RatePlans > RatePlan > Rates > Rate > BaseByGuestAmts > AmountAfterTax
+                      must be > 0.0 (was: >= 0.0)
 
      v. 2015-07 2.8 - Inventory: fixed the checks for the HotelDescriptiveContent attributes
 
@@ -1809,7 +1812,7 @@
                               </rng:attribute>
                               <rng:optional>
                                 <rng:attribute name="AmountAfterTax">
-                                  <rng:ref name="def_decimal_ge0"/>
+                                  <rng:ref name="def_decimal_gt0"/>
                                 </rng:attribute>
                               </rng:optional>
                               <rng:optional>
@@ -2331,6 +2334,15 @@
   <rng:define name="def_decimal_ge0">
     <rng:data type="decimal">
       <rng:param name="minInclusive">0.0</rng:param>
+      <rng:param name="pattern">[0-9]*\.?[0-9]*</rng:param>
+    </rng:data>
+  </rng:define>
+
+  <!-- A generic decimal > 0 type. -->
+
+  <rng:define name="def_decimal_gt0">
+    <rng:data type="decimal">
+      <rng:param name="minExclusive">0.0</rng:param>
       <rng:param name="pattern">[0-9]*\.?[0-9]*</rng:param>
     </rng:data>
   </rng:define>

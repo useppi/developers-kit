@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
-     AlpineBits 2015-07
+     AlpineBits 2015-07b
      http://www.alpinebits.org/
 
      W3C XML Schema file
 
      changelog:
+
+    v. 2015-07b 1.0 - RatePlans > RatePlan > Rates > Rate > BaseByGuestAmts > AmountAfterTax
+                      must be > 0.0 (was: >= 0.0)
 
      v. 2015-07 2.9 - Inventory: added a missing maxOccurs="unbounded" to the ImageItem
 
@@ -1353,7 +1356,7 @@
                                       <xs:element name="BaseByGuestAmt" maxOccurs="unbounded">
                                         <xs:complexType>
                                           <xs:attribute name="NumberOfGuests" use="required" type="def_int_gt0"/>
-                                          <xs:attribute name="AmountAfterTax" type="def_decimal_ge0"/>
+                                          <xs:attribute name="AmountAfterTax" type="def_decimal_gt0"/>
                                           <xs:attribute name="CurrencyCode">
                                             <xs:simpleType>
                                               <xs:restriction base="xs:string">
@@ -1912,6 +1915,15 @@
   <xs:simpleType name="def_decimal_ge0">
     <xs:restriction base="xs:decimal">
       <xs:minInclusive value="0.0"/>
+      <xs:pattern value="[0-9]*\.?[0-9]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- A generic decimal > 0 type. -->
+
+  <xs:simpleType name="def_decimal_gt0">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0.0"/>
       <xs:pattern value="[0-9]*\.?[0-9]*"/>
     </xs:restriction>
   </xs:simpleType>
