@@ -32,7 +32,7 @@
                 <RoomStay>
 
                     <RoomTypes>
-                        <RoomType RoomTypeCode="megasuite" RoomClassificationCode="42"/>
+                        <RoomType RoomTypeCode="bigsuite" RoomClassificationCode="42"/>
                     </RoomTypes>
 
                     <RatePlans>
