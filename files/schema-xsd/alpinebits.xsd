@@ -8,6 +8,9 @@
 
      changelog:
 
+    v. 2015-07b 1.2 - added optional attributes RatePlanID and RatePlanQualifier to RatePlan
+                      for the new OTA_HotelRatePlanNotif_accept_RatePlanJoin capability
+
     v. 2015-07b 1.1 - added def_invTypeCode_string type (string with up to 8 chars) used for the following attributes that identify room categories:
 
                       FreeRooms:     OTA_HotelAvailNotifRQ -> AvailStatusMessages -> AvailStatusMessage -> StatusApplicationControl -> InvTypeCode
@@ -1788,6 +1791,8 @@
                     </xs:simpleType>
                   </xs:attribute>                
                   <xs:attribute name="RatePlanCategory" type="def_nonempty_string"/>
+                  <xs:attribute name="RatePlanID" type="def_nonempty_string"/>
+                  <xs:attribute name="RatePlanQualifier" type="def_bool"/>
                 </xs:complexType>
               </xs:element>
 
