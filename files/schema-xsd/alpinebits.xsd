@@ -8,6 +8,16 @@
 
      changelog:
 
+    v. 2015-07b 1.1 - added def_invTypeCode_string type (string with up to 8 chars) used for the following attributes that identify room categories:
+
+                      FreeRooms:     OTA_HotelAvailNotifRQ -> AvailStatusMessages -> AvailStatusMessage -> StatusApplicationControl -> InvTypeCode
+                      GuestRequests: OTA_ResRetrieveRS -> ReservationList -> HotelReservation -> RoomStays -> RoomStay -> RoomTypes > RoomType -> RoomTypeCode
+                      Inventory:     OTA_HotelDescriptiveContentNotifRQ -> HotelDescriptiveContents -> HotelDescriptiveContent -> FacilityInfo -> GuestRooms -> GuestRoom -> Code
+                      RatePlan:      OTA_HotelRatePlanNotifRQ -> RatePlans -> RatePlan -> BookingRules -> BookingRules -> Code
+                      RatePlan:      OTA_HotelRatePlanNotifRQ -> RatePlans -> RatePlan -> Rates -> Rate -> InvTypeCode
+
+                      (derived from Lukas Braun's pull request)
+
     v. 2015-07b 1.0 - RatePlans > RatePlan > Rates > Rate > BaseByGuestAmts > AmountAfterTax
                       must be > 0.0 (was: >= 0.0)
 
@@ -984,142 +994,8 @@
   <!-- * Inventory                                                                     -->
   <!-- ******************************************************************************* -->
 
-
-<<<<<<< HEAD
   <!-- Inventory: OTA_HotelDescriptiveContentNotifRQ -->
-=======
-  <!-- Inventory: OTA_HotelInvNotifRQ -->
 
-  <xs:element name="OTA_HotelInvNotifRQ">
-    <xs:complexType>
-      <xs:sequence>
-
-        <!-- SellableProducts {1} -->
- 
-        <xs:element name="SellableProducts">
-          <xs:complexType>
-            <xs:sequence>
-
-              <!-- SellableProducts > SellableProduct {0,..} -->
-     
-              <xs:element name="SellableProduct" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:sequence>
-
-                    <!-- SellableProducts > SellableProduct > GuestRoom {1} -->
-
-                    <xs:element name="GuestRoom">
-                      <xs:complexType>
-                        <xs:sequence>
-
-                          <!-- SellableProducts > SellableProduct > GuestRoom > Quantities {0,1} -->
-
-                          <xs:element name="Quantities" minOccurs="0">
-                            <xs:complexType>
-                              <xs:attribute name="MaximumAdditionalGuests" use="required" type="def_int_ge0"/>
-                            </xs:complexType>
-                          </xs:element>
-
-                          <!-- SellableProducts > SellableProduct > GuestRoom > Occupancy {0..2} -->
-
-                          <xs:element name="Occupancy" minOccurs="0" maxOccurs="2">
-                            <xs:complexType>
-                              <xs:attribute name="MinOccupancy"                type="def_int_gt0"/>
-                              <xs:attribute name="MaxOccupancy" use="required" type="def_int_gt0"/>
-                              <xs:attribute name="AgeQualifyingCode">
-                                <xs:simpleType>
-                                  <xs:restriction base="xs:string">
-                                    <xs:enumeration value="8"/>
-                                  </xs:restriction>
-                                </xs:simpleType>
-                              </xs:attribute>
-                            </xs:complexType>
-                          </xs:element>
-
-                          <!-- SellableProducts > SellableProduct > GuestRoom > Room {0,1} -->
-
-                          <xs:element name="Room" minOccurs="0">
-                            <xs:complexType>
-                              <xs:attribute name="RoomClassificationCode" use="required" type="def_int_gt0"/>
-                              <xs:attribute name="RoomTypeCode"                          type="def_nonempty_string"/>
-                            </xs:complexType>
-                          </xs:element>
-
-                          <!-- SellableProducts > SellableProduct > GuestRoom > Description {0,1} -->
-
-                          <xs:element name="Description" minOccurs="0">
-                            <xs:complexType>
-                              <xs:sequence>
-
-                              <!-- SellableProducts > SellableProduct > GuestRoom > Description > Text {1,} -->
-
-                                <xs:element name="Text" maxOccurs="unbounded">
-                                  <xs:complexType>
-                                    <xs:simpleContent>
-                                      <xs:extension base="def_nonempty_string">                 
-                                        <xs:attribute name="TextFormat" use="required">
-                                          <xs:simpleType>
-                                            <xs:restriction base="xs:string">
-                                              <xs:enumeration value="PlainText"/>
-                                            </xs:restriction>
-                                          </xs:simpleType>
-                                        </xs:attribute>
-                                        <xs:attribute name="Language" use="required">
-                                          <xs:simpleType>
-                                            <xs:restriction base="xs:language">
-                                              <xs:pattern value="[a-z][a-z]"/>
-                                            </xs:restriction>
-                                          </xs:simpleType>
-                                        </xs:attribute>
-                                      </xs:extension>
-                                    </xs:simpleContent>                                          
-                                  </xs:complexType>
-                                </xs:element>
-
-                              </xs:sequence>
-                            </xs:complexType>
-                          </xs:element>
-
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
-
-                  </xs:sequence>
-                  <xs:attribute name="InvTypeCode" use="required" type="def_invTypeCode_string"/>
-                  <xs:attribute name="InvCode"                    type="def_nonempty_string"/>
-                </xs:complexType>
-              </xs:element>
-
-            </xs:sequence>
-            <xs:attribute name="HotelCode" type="def_nonempty_string"/>
-            <xs:attribute name="HotelName" type="def_nonempty_string"/>
-          </xs:complexType>
-        </xs:element>
-
-      </xs:sequence>
-      <xs:attribute name="Version" use="required"/>
-      <xs:attribute name="TimeStamp"/>
-    </xs:complexType>
-  </xs:element>
-
-
-  <!-- Inventory: OTA_HotelInvNotifRS -->
-
-  <xs:element name="OTA_HotelInvNotifRS">
-    <xs:complexType>
-      <xs:group   ref="def_generic_response"/>
-      <xs:attribute name="Version" use="required"/>
-      <xs:attribute name="TimeStamp"/>
-    </xs:complexType>
-  </xs:element>
-
-
-  <!-- ******************************************************************************* -->
-  <!-- * New Inventory (exact name pending)                                            -->
-  <!-- ******************************************************************************* -->
-
-
-  <!-- New Inventory: OTA_HotelDescriptiveContentNotifRQ -->
   <xs:element name="OTA_HotelDescriptiveContentNotifRQ">
     <xs:complexType>
       <xs:sequence>
@@ -1280,7 +1156,7 @@
                                       </xs:element>
 
                                     </xs:sequence>
-                                    <xs:attribute name="Code"              use="required" type="def_nonempty_string" />
+                                    <xs:attribute name="Code"              use="required" type="def_invTypeCode_string" />
                                     <xs:attribute name="MaxOccupancy"                     type="def_int_gt0" />
                                     <xs:attribute name="MinOccupancy"                     type="def_int_gt0" />
                                     <xs:attribute name="MaxChildOccupancy"                type="def_int_gt0" />
@@ -1463,7 +1339,7 @@
                                   </xs:restriction>
                                 </xs:simpleType>
                               </xs:attribute>
-                              <xs:attribute name="Code"  type="def_nonempty_string"/>
+                              <xs:attribute name="Code"  type="def_invTypeCode_string"/>
                               <xs:attribute name="Start" type="def_date"/>
                               <xs:attribute name="End"   type="def_date"/>
                             </xs:complexType>
@@ -2024,7 +1900,7 @@
   <xs:simpleType name="def_invTypeCode_string">
     <xs:restriction base="xs:string">
       <xs:minLength value="1"/>
-      <xs:maxLength value="16"/>
+      <xs:maxLength value="8"/>
     </xs:restriction>
   </xs:simpleType>
 
