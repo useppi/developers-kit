@@ -8,6 +8,8 @@
 
      changelog:
 
+    v. 2015-07b 1.3 - RatePlans > RatePlan > Description > TextFormat can now also be "HTML (besides "PlainText")
+
     v. 2015-07b 1.2 - added optional attributes RatePlanID and RatePlanQualifier to RatePlan
                       for the new OTA_HotelRatePlanNotif_accept_RatePlanJoin capability
 
@@ -1670,7 +1672,7 @@
 
                     <!-- RatePlans > RatePlan > Description {0,4}    (SimplePackages & RatePlans) -->
 
-                    <!-- Note: RatePlans only supports Text with TextFormat="PlainText", the
+                    <!-- Note: RatePlans only supports Text with TextFormat="PlainText" or TextFormat="HTML", the
                                rest ist for SimplePackages only -->
 
                     <xs:element name="Description" minOccurs="0" maxOccurs="4">
