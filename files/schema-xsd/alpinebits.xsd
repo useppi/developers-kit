@@ -13,7 +13,7 @@
                       - the RoomAmenityCode attribute becomes optional to allow empty Amenity elements 
                       - the MultimediaDescription element can be empty
 
-    v. 2015-07b 1.3 - RatePlans > RatePlan > Description > TextFormat can now also be "HTML (besides "PlainText")
+    v. 2015-07b 1.3 - RatePlans > RatePlan > Description > TextFormat can now also be "HTML" (besides "PlainText")
 
     v. 2015-07b 1.2 - added optional attributes RatePlanID and RatePlanQualifier to RatePlan
                       for the new OTA_HotelRatePlanNotif_accept_RatePlanJoin capability
@@ -1907,7 +1907,7 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- String type defining Rooms InvTypeCode  -->
+  <!-- String type defining room category codes (like InvTypeCode)  -->
 
   <xs:simpleType name="def_invTypeCode_string">
     <xs:restriction base="xs:string">
