@@ -98,5 +98,9 @@
   {
     "capability": "OTA_HotelRatePlanNotif_accept_overlay",
     "explanation": "for prices (RatePlans), the server accepts the rate plan notif type value Overlay"
+  },
+  {
+    "capability": "OTA_HotelRatePlanNotif_accept_RatePlanJoin",
+    "explanation": "for prices (RatePlans), the server supports grouping RatePlans with different MealPlanCodes under a single price list"
   }
 ]
