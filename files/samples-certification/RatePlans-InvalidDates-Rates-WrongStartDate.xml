@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Example request for a New message of OTA_HotelRatePlanNotifRQ, with a invalid date range (Overlapping) of Rates
+Example request for a New message of OTA_HotelRatePlanNotifRQ, with a invalid date range (invalid Start date 30th Feb) of Rates
 The server must return an error
 -->
 <OTA_HotelRatePlanNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="6.000" TimeStamp="{YEAR}-10-22T19:20:47" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelRatePlanNotifRQ.xsd">
   <RatePlans HotelCode="{HOTELCODE}">
     <RatePlan CurrencyCode="EUR" RatePlanCode="TP-HP" RatePlanNotifType="New">
-      <BookingRules>
-        <BookingRule Code="DZ_2" CodeContext="ROOMTYPE" Start="{YEAR}-12-01" End="{YEAR}-12-21">
-          <LengthsOfStay>
-            <LengthOfStay Time="3" TimeUnit="Day" MinMaxMessageType="SetMinLOS"/>
-          </LengthsOfStay>
-        </BookingRule>
-        <BookingRule Code="DZ_2" CodeContext="ROOMTYPE" Start="{YEAR}-12-22" End="{YEAR}-12-31">
-          <LengthsOfStay>
-            <LengthOfStay Time="3" TimeUnit="Day" MinMaxMessageType="SetMinLOS"/>
-          </LengthsOfStay>
-        </BookingRule>
-      </BookingRules>
       <Rates>
-        <Rate InvTypeCode="DZ_2" Start="{YEAR}-10-22" End="{YEAR}-12-30">
+        <Rate InvTypeCode="DZ_2" Start="{YEAR}-02-30" End="{YEAR}-10-01">
           <BaseByGuestAmts>
             <BaseByGuestAmt NumberOfGuests="1" AgeQualifyingCode="10" AmountAfterTax="152.4" Type="7"/>
             <BaseByGuestAmt NumberOfGuests="2" AgeQualifyingCode="10" AmountAfterTax="127" Type="7"/>

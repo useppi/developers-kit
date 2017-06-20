@@ -7,7 +7,6 @@
     <HotelDescriptiveContent HotelCode="{HOTELCODE}"   >
       <FacilityInfo>
         <GuestRooms>
-          <!-- END SINGLE 1 -->
           <!-- START SINGLE 2 -->
            <GuestRoom Code="EZ_2" MaxOccupancy="2" MinOccupancy="1" MaxChildOccupancy="0">
             <TypeRoom StandardOccupancy="1" RoomClassificationCode="42"/>

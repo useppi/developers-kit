@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Example request for a New message of OTA_HotelRatePlanNotifRQ, which defines a Famliy offer:
- - 1 child under 8 years free  
+Example request for a New message of OTA_HotelRatePlanNotifRQ, which defines a Famliy offer with a MinCount of 2 children
+ - 1 child under 8 years free if 2 children are given 
  - in DZ_2 a minstay of 7 nights is defined as a BookingRule
 -->
 <OTA_HotelRatePlanNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" Version="6.000" TimeStamp="{YEAR}-08-04T11:12:17" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelRatePlanNotifRQ.xsd">
@@ -80,7 +80,7 @@ Example request for a New message of OTA_HotelRatePlanNotifRQ, which defines a F
         <Offer>
           <Discount Percent="100"/>
           <Guests>
-            <Guest AgeQualifyingCode="8" MaxAge="10" FirstQualifyingPosition="1" LastQualifyingPosition="1" MinCount="0"/>
+            <Guest AgeQualifyingCode="8" MaxAge="10" FirstQualifyingPosition="1" LastQualifyingPosition="1" MinCount="2"/>
           </Guests>
         </Offer>
       </Offers>
